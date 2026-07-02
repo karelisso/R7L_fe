@@ -1,29 +1,45 @@
-[gd_scene format=3 uid="uid://dfevwd7nwmimb"]
+[gd_scene format=4 uid="uid://dfevwd7nwmimb"]
 
-[ext_resource type="PackedScene" uid="uid://dk1mfxqbux6o6" path="res://scene_test/character.tscn" id="1_wbfu4"]
+[ext_resource type="Texture2D" uid="uid://bhfdb3yl6hbkq" path="res://tiles/BG merged.png" id="1_xkndl"]
+[ext_resource type="Texture2D" uid="uid://bwolb7jqaiggg" path="res://tiles/teszt kisebb talaj ződ merged.png" id="2_xkndl"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wbfu4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb48q"]
+texture = ExtResource("1_xkndl")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbfu4"]
-size = Vector2(352.33334, 20)
+[sub_resource type="TileSet" id="TileSet_xrivr"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/6 = SubResource("TileSetAtlasSource_sb48q")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u44n3"]
+texture = ExtResource("2_xkndl")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_u44n3"]
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 0
+sources/6 = SubResource("TileSetAtlasSource_u44n3")
 
 [node name="Game" type="Node2D" unique_id=748095446]
 z_index = 1
 
-[node name="Character" parent="." unique_id=466616266 instance=ExtResource("1_wbfu4")]
-position = Vector2(91.3, 0)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1734320064]
-material = SubResource("CanvasItemMaterial_wbfu4")
-position = Vector2(-28, -39)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1386390661]
-position = Vector2(197.5, 192.33334)
-shape = SubResource("RectangleShape2D_wbfu4")
+[node name="TileMapLayerbg" type="TileMapLayer" parent="." unique_id=566667255]
+z_index = -3
+tile_map_data = PackedByteArray("AAACAAgABgAAAAAAAAAEAAgABgABAAAAAAAGAAgABgACAAAAAAAIAAgABgADAAAAAAAKAAgABgAEAAAAAAANAAgABgAFAAAAAAA=")
+tile_set = SubResource("TileSet_xrivr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1434833776]
+tile_map_data = PackedByteArray("AAAAAAkABgABAAAAAAABAAkABgABAAAAAAACAAkABgAAAAAAAAADAAkABgABAAAAAAAEAAkABgAAAAAAAAAFAAkABgABAAAAAAAGAAkABgAAAAAAAAAHAAkABgABAAAAAAAIAAkABgABAAAAAAAJAAkABgABAAAAAAAKAAkABgABAAAAAAALAAkABgAAAAAAAAAMAAkABgAAAAAAAAANAAkABgABAAAAAAAOAAkABgAAAAAAAAAPAAkABgABAAAAAAAQAAkABgAAAAAAAAARAAkABgAAAAAAAAASAAkABgABAAAAAAATAAkABgABAAAAAAAUAAkABgAAAAAAAAAVAAkABgABAAAAAAA=")
 tile_set = SubResource("TileSet_u44n3")

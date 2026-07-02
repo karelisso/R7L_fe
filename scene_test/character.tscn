@@ -138,6 +138,7 @@ script = ExtResource("1_rkhd4")
 shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=531432236]
+visible = false
 rotation = 3.1415927
 scale = Vector2(10, 10)
 mesh = SubResource("PlaneMesh_esqvk")
