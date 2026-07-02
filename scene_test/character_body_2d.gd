@@ -21,7 +21,7 @@ func _physics_process(_delta):
 	if not is_on_floor():
 		velocity.y += gravity
 		if walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
-			velocity.y = JUMP_VELOCITY
+			velocity.y = jump_velocity
 			walljump = false
 		anim.play("spin")
 	else:
@@ -44,11 +44,12 @@ func _physics_process(_delta):
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	#area.get_parent().call_deferred("queue_free")
-	area.call_deferred("loadlevel")
-	#JUMP_VELOCITY -= 100
-	gravity -= 2
-	if gravity <5:
-		gravity = 5
-	area.get_parent().call_deferred("queue_free")
-	jump_velocity -= 100
+	if area.id == "level_loader":
+		area.call_deferred("loadlevel")
+		area.get_parent().call_deferred("queue_free")
+	elif area.id == "spring":
+		gravity -= 2
+		if gravity <5:
+			gravity = 5
+		jump_velocity -= 100
+		area.get_parent().call_deferred("queue_free")

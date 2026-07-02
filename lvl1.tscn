@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bhfdb3yl6hbkq" path="res://tiles/BG merged.png" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://bwolb7jqaiggg" path="res://tiles/teszt kisebb talaj ződ merged.png" id="2_xkndl"]
 [ext_resource type="Script" uid="uid://ckyoe5ncvriam" path="res://scene_test/area_2d.gd" id="3_u44n3"]
+[ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://spring.tscn" id="4_wg0iv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb48q"]
 texture = ExtResource("1_xkndl")
@@ -59,3 +60,6 @@ pos_x = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=292177030]
 position = Vector2(13, 1)
 shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Spring" parent="." unique_id=911301289 instance=ExtResource("4_wg0iv")]
+position = Vector2(284, 125)

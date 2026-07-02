@@ -1,4 +1,7 @@
 extends Area2D
+
+var id = "level_loader"
+
 #the next level loaded
 @export	var lvl:int
 #set position for the next level

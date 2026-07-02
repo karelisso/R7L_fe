@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c6toiscbxbouq"]
 
+[ext_resource type="Script" uid="uid://cgnhh5nkep8w7" path="res://spring.gd" id="1_boyml"]
 [ext_resource type="Texture2D" uid="uid://22m1u78qobc1" path="res://icon.svg" id="1_ka4py"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lmt8p"]
@@ -15,6 +16,7 @@ mesh = SubResource("PlaneMesh_lmt8p")
 texture = ExtResource("1_ka4py")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1906788137]
+script = ExtResource("1_boyml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=591194738]
 scale = Vector2(0.5, 0.5)
