@@ -1,0 +1,23 @@
+[gd_scene format=4 uid="uid://dfevwd7nwmimb"]
+
+[ext_resource type="Texture2D" uid="uid://dnqfbmginsjhp" path="res://Buddy.png" id="1_wbfu4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkndl"]
+texture = ExtResource("1_wbfu4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u44n3"]
+sources/1 = SubResource("TileSetAtlasSource_xkndl")
+
+[node name="Game" type="Node2D" unique_id=748095446]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1434833776]
+tile_map_data = PackedByteArray("AAD/////AQAAAAAAAAAAAP//AQABAAAAAAD//wAAAQAAAAEAAAAAAAAAAQABAAEAAAACAP//AQACAAAAAAADAP//AQADAAAAAAACAAAAAQACAAEAAAADAAAAAQADAAEAAAA=")
+tile_set = SubResource("TileSet_u44n3")
