@@ -8,7 +8,7 @@ font_size = 48
 
 [node name="main" type="Node2D" unique_id=1276813274]
 script = ExtResource("1_uu6xs")
-stages = PackedStringArray("res://Game.tscn")
+stages = PackedStringArray("res://lvl1.tscn", "res://lvl2.tscn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1170587652]
 

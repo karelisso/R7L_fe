@@ -36,5 +36,9 @@ func _physics_process(_delta):
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	area.get_parent().call_deferred("queue_free")
-	JUMP_VELOCITY -= 100
+	#area.get_parent().call_deferred("queue_free")
+	area.call_deferred("loadlevel")
+	#JUMP_VELOCITY -= 100
+	gravity -= 2
+	if gravity >5:
+		gravity = 5
