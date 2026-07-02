@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
-@export var gravity_growth = 0.01
-var gravity = 5
-var SPEED = 300.0
+var gravity_growth:float = 0.01
+var gravity:float = 5.0
+var SPEED = 150.0
 var JUMP_VELOCITY = -200.0
+@onready var anim = $AnimatedSprite2D
 
+func _init() -> void:
+	gravity = 5.0
+	gravity_growth = 0.01
 
 func _physics_process(_delta):
 	
@@ -12,7 +16,14 @@ func _physics_process(_delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity
-
+		anim.play("spin")
+	else:
+		if velocity.x >0.2:
+			anim.play("walkrigh")
+		elif velocity.x < -0.2:
+			anim.play("walkleft")
+		else:
+			anim.play("idl")
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -21,7 +32,6 @@ func _physics_process(_delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
 	move_and_slide()
 
 
