@@ -2,11 +2,23 @@
 
 [ext_resource type="Script" uid="uid://bmppwfc11txkw" path="res://scene_test/character_body_2d.gd" id="1_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://22m1u78qobc1" path="res://icon.svg" id="2_lrhn5"]
+[ext_resource type="Texture2D" uid="uid://1khrr5r0nn1g" path="res://alien_Buddy.png" id="3_ij4jk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt8p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_esqvk"]
 orientation = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ij4jk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Character" type="CharacterBody2D" unique_id=466616266]
 collision_mask = 2
@@ -25,5 +37,8 @@ texture = ExtResource("2_lrhn5")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1471317511]
 shape = SubResource("RectangleShape2D_lmt8p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1458269014]
+sprite_frames = SubResource("SpriteFrames_xrivr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
