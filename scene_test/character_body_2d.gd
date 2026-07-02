@@ -8,7 +8,6 @@ var JUMP_VELOCITY = -200.0
 
 var can_walljump = true
 var walljump = true
-var can_dash = true
 
 func _init() -> void:
 	gravity = 5.0
