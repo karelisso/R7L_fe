@@ -1,5 +1,6 @@
 extends Node2D
 @export var gravity:float
+@export var spawn:Vector2
 @onready var text:Label = $CanvasLayer/Label
 @export var stages:PackedStringArray
 @onready var sceneparent:Node = $CanvasLayer/SubViewportContainer/subviewport/Parent
@@ -10,7 +11,7 @@ func _ready() -> void:
 	#var instanced_scene = some_scene.instance() # returns an instance of the scene
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
-	ChangeScene(0,313.125,-15.939)
+	ChangeScene(0,spawn.x,spawn.y)
 func _process(delta: float) -> void:
 	text.text = str(gravity) 
 func ChangeScene(tooo:int,x:int,y:int):
