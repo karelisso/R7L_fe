@@ -6,6 +6,7 @@ extends Node2D
 @onready var sceneparent:Node = $CanvasLayer/SubViewportContainer/subviewport/Parent
 @onready var player = $CanvasLayer/SubViewportContainer/subviewport/Character
 @onready var player_anim_sprite = $CanvasLayer/SubViewportContainer/subviewport/Character/AnimatedSprite2D
+
 var power:float
 
 var is_paused = false
@@ -37,11 +38,15 @@ func ChangeScene(tooo:int,x:int,y:int):
 func toggle_pause():
 	if not is_paused:
 		is_paused = true
-		player_anim_sprite.speed_scale = 0
-		player.set_process(false)
-		player.set_physics_process(false)
+		player.process_mode = Node.PROCESS_MODE_DISABLED
+		sceneparent.process_mode =Node.PROCESS_MODE_DISABLED
+		#player_anim_sprite.speed_scale = 0
+		#player.set_process(false)
+		#player.set_physics_process(false)
 	else:
 		is_paused = false
-		player_anim_sprite.speed_scale = 1
-		player.set_process(true)
-		player.set_physics_process(true)
+		player.process_mode = Node.PROCESS_MODE_INHERIT
+		sceneparent.process_mode =Node.PROCESS_MODE_INHERIT
+		#player_anim_sprite.speed_scale = 1
+		#player.set_process(true)
+		#player.set_physics_process(true)
