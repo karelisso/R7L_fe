@@ -11,27 +11,41 @@ var walljump = true
 @onready var anim = $AnimatedSprite2D
 @export var snapback_length = 18 # in buffer_size mult
 #multiply it by interwal to get length i second
+var snapback_automatic = true
 var snapback_interwal = 10 #in frames
 var snapback_counter=0
 var pos_buffer:PackedVector2Array
 func _init() -> void:
 	gravity = 5.0
 	gravity_growth = 0.01
-
+	pos_buffer.resize(snapback_length)
+	pos_buffer.fill(position)
 func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
 	gravity += gravity_growth
-	snapback_counter+=1
-	if snapback_counter > snapback_interwal:
-		if pos_buffer.size() > snapback_length:
-			pos_buffer.remove_at(0)
-		pos_buffer.append(position)
-		snapback_counter = 0
-	if Input.is_action_just_pressed("load"):
-		position = pos_buffer[0]
+	if snapback_automatic:
+		snapback_counter+=1
+		if snapback_counter > snapback_interwal:
+			if pos_buffer.size() > snapback_length:
+				pos_buffer.remove_at(0)
+			pos_buffer.append(position)
+			snapback_counter = 0
+		if Input.is_action_just_pressed("load"):
+			position = pos_buffer[0]
+	else:
+		snapback_counter +=1
+		if Input.is_action_just_pressed("load"):
+			snapback_counter = 0
+			pos_buffer.clear()
+			pos_buffer.append(position)
+		if snapback_counter > snapback_interwal and pos_buffer.size() <= snapback_length:
+			if pos_buffer.size() == snapback_length:
+				position = pos_buffer[0]
+			pos_buffer.append(position)
+			snapback_counter = 0	
 	if not is_on_floor():
 		velocity.y += gravity
 		if walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
@@ -63,6 +77,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		#transition between rooms should reset gravity?
 		gravity =5
 		jump_velocity = -200
+		pos_buffer.clear()
 		area.get_parent().call_deferred("queue_free")
 	elif area.id == "spring":
 		gravity -= 1
@@ -71,5 +86,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		jump_velocity -= 100
 		area.get_parent().call_deferred("queue_free")
 func _draw() -> void:
-	if pos_buffer.size() > 1:
-		draw_circle(to_local(pos_buffer[0]) ,10,Color(1,0,0,1))
+	if pos_buffer.size() > 0:
+		if not snapback_automatic:
+			if pos_buffer.size() < snapback_length -1:
+				draw_circle(to_local(pos_buffer[0]) ,10,Color(1,0,0,1))
+			elif not pos_buffer.size() > snapback_length:
+				draw_circle(to_local(pos_buffer[0]) ,10,Color(0,1,0,1))
+		else:
+			draw_circle(to_local(pos_buffer[0]) ,10,Color(1,0,0,1))
