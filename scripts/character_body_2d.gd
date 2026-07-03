@@ -68,7 +68,6 @@ func _physics_process(_delta):
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
-
 	move_and_slide()
 
 
