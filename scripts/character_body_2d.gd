@@ -28,7 +28,7 @@ func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
 	gravity += gravity_growth
 	if carried != null:
-		carried.global_position = global_position  
+		carried.global_position = global_position +Vector2(0,-20) 
 		if not Input.is_action_pressed("pick"):
 			carried.set_collision_layer_value(2,true)
 			if direction == 0:
@@ -82,6 +82,7 @@ func _physics_process(_delta):
 	
 	for i in get_slide_collision_count():
 		var im = get_slide_collision(i).get_collider()
+		print(Time)
 		if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
 			var x = 3
 			carried = im
