@@ -9,12 +9,13 @@ var jump_velocity = -200.0
 var can_walljump = true
 var walljump = true
 @onready var anim = $AnimatedSprite2D
-@export var snapback_length = 18 # in buffer_size mult
+@export var snapback_length = 60 # in buffer_size mult
 #multiply it by interwal to get length i second
 var snapback_automatic = true
-var snapback_interwal = 10 #in frames
+var snapback_interwal = 2 #in frames
 var snapback_counter=0
 var pos_buffer:PackedVector2Array
+@onready var carried:CharacterBody2D
 func _ready() -> void:
 	gravity = 5.0
 	gravity_growth = 0.01
@@ -26,7 +27,16 @@ func _process(delta: float) -> void:
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
 	gravity += gravity_growth
-	Time
+	if carried != null:
+		carried.global_position = global_position  
+		if not Input.is_action_pressed("pick"):
+			carried.set_collision_layer_value(2,true)
+			if direction == 0:
+				carried.velocity += Vector2(0,-500)
+			else:
+				carried.velocity += Vector2(100*direction,10)
+			carried = null
+		
 	if snapback_automatic:
 		snapback_counter+=1
 		if snapback_counter > snapback_interwal:
@@ -69,7 +79,14 @@ func _physics_process(_delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 	move_and_slide()
-
+	
+	for i in get_slide_collision_count():
+		var im = get_slide_collision(i).get_collider()
+		if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
+			var x = 3
+			carried = im
+			carried.set_collision_layer_value(2,false)
+		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.id == "level_loader":
