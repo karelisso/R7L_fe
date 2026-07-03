@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://dfevwd7nwmimb"]
 
 [ext_resource type="Texture2D" uid="uid://bhfdb3yl6hbkq" path="res://textures/tiles/BG merged.png" id="1_xkndl"]
+[ext_resource type="Texture2D" uid="uid://cws26vxxhpx6i" path="res://textures/tiles/kek_oldalak_03_verzio.png" id="2_wny78"]
 [ext_resource type="Texture2D" uid="uid://bwolb7jqaiggg" path="res://textures/tiles/teszt kisebb talaj ződ merged.png" id="2_xkndl"]
 [ext_resource type="Script" uid="uid://ckyoe5ncvriam" path="res://scripts/area_2d.gd" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="4_wg0iv"]
+[ext_resource type="Texture2D" uid="uid://cdybxtew17txu" path="res://textures/WeightingDownCompanionCube.png" id="5_bnw0w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb48q"]
 texture = ExtResource("1_xkndl")
@@ -22,6 +24,97 @@ terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/6 = SubResource("TileSetAtlasSource_sb48q")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8ly6"]
+texture = ExtResource("2_wny78")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u44n3"]
 texture = ExtResource("2_xkndl")
 0:0/0 = 0
@@ -33,9 +126,13 @@ texture = ExtResource("2_xkndl")
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 0
 sources/6 = SubResource("TileSetAtlasSource_u44n3")
+sources/0 = SubResource("TileSetAtlasSource_l8ly6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(20, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(16, 16)
 
 [node name="Game" type="Node2D" unique_id=748095446]
 z_index = 1
@@ -46,7 +143,7 @@ tile_map_data = PackedByteArray("AAACAAgABgAAAAAAAAAEAAgABgABAAAAAAAGAAgABgACAAA
 tile_set = SubResource("TileSet_xrivr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1434833776]
-tile_map_data = PackedByteArray("AAAAAAkABgABAAAAAAABAAkABgABAAAAAAACAAkABgAAAAAAAAADAAkABgABAAAAAAAEAAkABgAAAAAAAAAFAAkABgABAAAAAAAGAAkABgAAAAAAAAAHAAkABgABAAAAAAAIAAkABgABAAAAAAAJAAkABgABAAAAAAAKAAkABgABAAAAAAALAAkABgAAAAAAAAAMAAkABgAAAAAAAAANAAkABgABAAAAAAAOAAkABgAAAAAAAAAPAAkABgABAAAAAAAQAAkABgAAAAAAAAARAAkABgAAAAAAAAASAAkABgABAAAAAAATAAkABgABAAAAAAAUAAkABgAAAAAAAAAVAAkABgABAAAAAAAWAAkABgAAAAAAAAAXAAkABgAAAAAAAAAAAAgABgAAAAAAAAAAAAcABgAAAAAAAAAAAAYABgAAAAAAAAAAAAUABgAAAAAAAAAAAAQABgAAAAAAAAAAAAMABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAXAAUABgAAAAAAAAAXAAQABgAAAAAAAAAXAAAABgAAAAAAAAAXAAEABgAAAAAAAAAXAAYABgAAAAAAAAAYAAIABgAAAAAAAAAYAAMABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkABgABAAAAAAABAAkABgABAAAAAAACAAkABgAAAAAAAAADAAkABgABAAAAAAAEAAkABgAAAAAAAAAFAAkABgABAAAAAAAGAAkABgAAAAAAAAAHAAkABgABAAAAAAAIAAkABgABAAAAAAAJAAkABgABAAAAAAAKAAkABgABAAAAAAALAAkABgAAAAAAAAAMAAkABgAAAAAAAAANAAkABgABAAAAAAAOAAkABgAAAAAAAAAPAAkABgABAAAAAAAQAAkABgAAAAAAAAARAAkABgAAAAAAAAASAAkABgABAAAAAAATAAkABgABAAAAAAAUAAkABgAAAAAAAAAVAAkABgABAAAAAAAWAAkABgAAAAAAAAAXAAkABgAAAAAAAAAAAAgABgAAAAAAAAAAAAcABgAAAAAAAAAAAAYABgAAAAAAAAAAAAUABgAAAAAAAAAAAAQABgAAAAAAAAAAAAMABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAXAAUABgAAAAAAAAAXAAQABgAAAAAAAAAXAAAABgAAAAAAAAAXAAEABgAAAAAAAAAXAAYABgAAAAAAAAAYAAIABgAAAAAAAAAYAAMABgAAAAAAAAD//wAABgAAAAAAAAD/////BgAAAAAAAAD///7/BgAAAAAAAAD///3/BgAAAAAAAAAAAP3/BgAAAAAAAAABAP3/BgAAAAAAAAACAP3/BgAAAAAAAAADAP3/BgAAAAAAAAAEAP3/BgAAAAAAAAAFAP3/BgAAAAAAAAAGAP3/BgAAAAAAAAAHAP3/BgAAAAAAAAAIAP3/BgAAAAAAAAAJAP3/BgAAAAAAAAAKAP3/BgAAAAAAAAALAP3/BgAAAAAAAAAMAP3/BgAAAAAAAAANAP3/BgAAAAAAAAAOAP3/BgAAAAAAAAAPAP3/BgAAAAAAAAAQAP3/BgAAAAAAAAARAP3/BgAAAAAAAAASAP3/BgAAAAAAAAATAP3/BgAAAAAAAAAUAP3/BgAAAAAAAAAVAP3/BgAAAAAAAAAWAP3/BgAAAAAAAAAXAP3/BgAAAAAAAAAYAP3/BgAAAAAAAAAYAP7/BgAAAAAAAAAYAP//BgAAAAAAAAA=")
 tile_set = SubResource("TileSet_u44n3")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1521491359]
@@ -63,3 +160,17 @@ shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="Spring" parent="." unique_id=911301289 instance=ExtResource("4_wg0iv")]
 position = Vector2(284, 125)
+
+[node name="Box" type="Node2D" parent="." unique_id=2124977626]
+position = Vector2(136, 34)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Box" unique_id=280394757]
+collision_mask = 3
+mass = 1000.0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Box/RigidBody2D" unique_id=820378083]
+texture = ExtResource("5_bnw0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box/RigidBody2D" unique_id=1762889554]
+shape = SubResource("RectangleShape2D_13qdw")

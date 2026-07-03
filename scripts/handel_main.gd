@@ -4,6 +4,7 @@ extends Node2D
 @export var stages:PackedStringArray
 @onready var sceneparent:Node = $CanvasLayer/SubViewportContainer/subviewport/Parent
 @onready var player = $CanvasLayer/SubViewportContainer/subviewport/Character
+var power:float
 
 var is_paused = false
 
@@ -22,9 +23,7 @@ func _process(delta: float) -> void:
 			add_child(instanced_scene)
 			pause()
 	
-	text.text = str(gravity) 
-	if Input.is_action_just_pressed("load"):
-		ChangeScene(0,313.125,-15.939)
+	text.text = str(gravity)
 
 func ChangeScene(tooo:int,x:int,y:int):
 	for n in sceneparent.get_children():

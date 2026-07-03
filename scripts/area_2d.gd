@@ -1,6 +1,6 @@
 extends Area2D
 
-var id = "level_loader"
+@export var id = "level_loader"
 
 #the next level loaded
 @export	var lvl:int

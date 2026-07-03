@@ -32,7 +32,7 @@ size = Vector2i(384, 216)
 render_target_update_mode = 4
 
 [node name="Character" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=466616266 instance=ExtResource("2_uu6xs")]
-position = Vector2(313.12512, -15.938705)
+position = Vector2(230, 150)
 
 [node name="Parent" type="Node" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=431184468]
 

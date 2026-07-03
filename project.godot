@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gamejam 7rvl"
-run/main_scene="uid://baildq6bamoup"
+run/main_scene="uid://cy8cjflrwm8at"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://textures/icon.svg"
 
@@ -23,6 +23,11 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg")
+
+[global_group]
+
+manager=""
+weighted=""
 
 [input]
 
@@ -43,7 +48,8 @@ right={
 }
 load={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
+]
 }
 pause={
 "deadzone": 0.2,
@@ -54,6 +60,7 @@ pause={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+2d/default_gravity=1000.0
 
 [rendering]
 
