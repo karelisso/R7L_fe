@@ -4,6 +4,7 @@ extends Node2D
 @export var stages:PackedStringArray
 @onready var sceneparent:Node = $CanvasLayer/SubViewportContainer/subviewport/Parent
 @onready var player = $CanvasLayer/SubViewportContainer/subviewport/Character
+@onready var player_anim_sprite = $CanvasLayer/SubViewportContainer/subviewport/Character/AnimatedSprite2D
 var power:float
 
 var is_paused = false
@@ -21,8 +22,7 @@ func _process(delta: float) -> void:
 			var pause_menu = load("res://scenes/pause_menu.tscn")
 			var instanced_scene = pause_menu.instantiate()
 			add_child(instanced_scene)
-			pause()
-	
+			toggle_pause()
 	text.text = str(gravity)
 
 func ChangeScene(tooo:int,x:int,y:int):
@@ -34,9 +34,14 @@ func ChangeScene(tooo:int,x:int,y:int):
 	sceneparent.add_child(instanced_scene)
 	player.position = Vector2(x,y)
 
-func pause():
-	if is_paused:
-		is_paused = false
-	elif not is_paused:
+func toggle_pause():
+	if not is_paused:
 		is_paused = true
-	print(is_paused)
+		player_anim_sprite.speed_scale = 0
+		player.set_process(false)
+		player.set_physics_process(false)
+	else:
+		is_paused = false
+		player_anim_sprite.speed_scale = 1
+		player.set_process(true)
+		player.set_physics_process(true)

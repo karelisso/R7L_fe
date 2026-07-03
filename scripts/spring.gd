@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var offset: Vector2
 var timer = 0
-@export var wobble_strength = 3
+@export var wobble_strength = 1
 @export var wobble_speed = 3
 
 func _physics_process(delta: float) -> void:
@@ -13,4 +13,3 @@ func _physics_process(delta: float) -> void:
 		timer -= 360
 	offset = Vector2(0, sin(timer) * wobble_strength)
 	mesh.position = offset
-	

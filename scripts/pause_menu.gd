@@ -3,12 +3,9 @@ extends Control
 @onready var main_menu = preload("res://scenes/main_menu.tscn")
 @onready var settings_menu = preload("res://scenes/settings_menu.tscn")
 
-func _ready() -> void:
-	grab_focus()
-
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		get_parent().pause()
+		get_parent().toggle_pause()
 		call_deferred("queue_free")
 
 func _on_main_menu_button_button_down() -> void:
@@ -25,5 +22,5 @@ func _on_settings_button_button_down() -> void:
 	call_deferred("queue_free")
 
 func _on_back_to_game_button_button_down() -> void:
-	get_parent().pause()
+	get_parent().toggle_pause()
 	call_deferred("queue_free")
