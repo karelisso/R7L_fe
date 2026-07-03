@@ -15,17 +15,18 @@ var snapback_automatic = true
 var snapback_interwal = 10 #in frames
 var snapback_counter=0
 var pos_buffer:PackedVector2Array
-func _init() -> void:
+func _ready() -> void:
 	gravity = 5.0
 	gravity_growth = 0.01
 	pos_buffer.resize(snapback_length)
-	pos_buffer.fill(position)
+	pos_buffer.fill(to_global(position) )
 func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
 	gravity += gravity_growth
+	Time
 	if snapback_automatic:
 		snapback_counter+=1
 		if snapback_counter > snapback_interwal:
