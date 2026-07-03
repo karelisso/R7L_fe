@@ -1,2 +1,2 @@
 extends Area2D
-var id = "spring"
+@export var id = "spring"
