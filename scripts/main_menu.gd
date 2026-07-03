@@ -13,5 +13,6 @@ func _on_start_button_button_down() -> void:
 func _on_settings_button_button_down() -> void:
 	settings_menu = load("res://scenes/settings_menu.tscn")
 	var instance = settings_menu.instantiate()
+	instance.scene = load("res://scenes/main_menu.tscn")
 	add_sibling(instance)
 	call_deferred("queue_free")

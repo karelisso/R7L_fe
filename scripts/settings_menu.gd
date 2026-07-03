@@ -1,9 +1,14 @@
 extends Control
 
-@onready var main_menu = preload("res://scenes/main_menu.tscn")
+@onready var scene
 
-func _on_button_button_down() -> void:
-	main_menu = load("res://scenes/main_menu.tscn")
-	var instance = main_menu.instantiate()
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		var instance = scene.instantiate()
+		add_sibling(instance)
+		call_deferred("queue_free")
+
+func _on_back_button_button_down() -> void:
+	var instance = scene.instantiate()
 	add_sibling(instance)
 	call_deferred("queue_free")
