@@ -140,17 +140,15 @@ shape = SubResource("RectangleShape2D_xrivr")
 position = Vector2(284, 125)
 
 [node name="Box" type="Node2D" parent="." unique_id=2124977626 groups=["weighted"]]
-position = Vector2(136, 34)
+position = Vector2(166, 123)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Box" unique_id=1191963949 groups=["weighted"]]
-position = Vector2(-136, -34)
 collision_layer = 3
+input_pickable = true
 script = ExtResource("6_l8ly6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Box/CharacterBody2D" unique_id=820378083]
-position = Vector2(136, 34)
 texture = ExtResource("5_bnw0w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box/CharacterBody2D" unique_id=1762889554]
-position = Vector2(136, 34)
 shape = SubResource("RectangleShape2D_13qdw")
