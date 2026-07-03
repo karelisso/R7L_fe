@@ -16,7 +16,7 @@ func _ready() -> void:
 	#var instanced_scene = some_scene.instance() # returns an instance of the scene
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
-	ChangeScene(0,spawn.x,spawn.y)
+	ChangeScene(0,sceneparent.get_child(0).get_child(0).position)
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
@@ -26,14 +26,14 @@ func _process(delta: float) -> void:
 			toggle_pause()
 	text.text = str(gravity)
 
-func ChangeScene(tooo:int,x:int,y:int):
+func ChangeScene(tooo:int,pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
 		n.queue_free()
 	var some_scene = load(stages[tooo]) # returns a PackedScene
 	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
 	sceneparent.add_child(instanced_scene)
-	player.position = Vector2(x,y)
+	player.position = pos
 
 func toggle_pause():
 	if not is_paused:

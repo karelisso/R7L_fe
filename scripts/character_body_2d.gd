@@ -92,9 +92,6 @@ func _physics_process(_delta):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.id == "level_loader":
 		area.call_deferred("loadlevel")
-		#transition between rooms should reset gravity?
-		gravity =5
-		jump_velocity = -200
 		pos_buffer.clear()
 		area.get_parent().call_deferred("queue_free")
 	elif area.id == "spring":

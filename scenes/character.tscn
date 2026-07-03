@@ -134,7 +134,10 @@ animations = [{
 collision_mask = 2
 script = ExtResource("1_rkhd4")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1041434438]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874132991]
+scale = Vector2(0.8, 1)
 shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=531432236]
@@ -147,6 +150,7 @@ texture = ExtResource("2_lrhn5")
 [node name="Area2D" type="Area2D" parent="." unique_id=47805040]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1471317511]
+scale = Vector2(0.8, 1)
 shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1458269014]
