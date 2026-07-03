@@ -10,7 +10,7 @@ func _ready() -> void:
 	#var instanced_scene = some_scene.instance() # returns an instance of the scene
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
-	ChangeScene(0,313.125,-15.939)
+	ChangeScene(0,200,30)
 func _process(delta: float) -> void:
 	text.text = str(gravity) 
 func ChangeScene(tooo:int,x:int,y:int):

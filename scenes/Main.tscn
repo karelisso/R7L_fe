@@ -13,9 +13,11 @@ stages = PackedStringArray("res://levels/lvl1.tscn", "res://levels/lvl2.tscn")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1170587652]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=2104327742]
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.944
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -32,7 +34,7 @@ size = Vector2i(384, 216)
 render_target_update_mode = 4
 
 [node name="Character" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=466616266 instance=ExtResource("2_uu6xs")]
-position = Vector2(313.12512, -15.938705)
+position = Vector2(176.33334, 107.333336)
 
 [node name="Parent" type="Node" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=431184468]
 
