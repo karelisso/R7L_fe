@@ -16,7 +16,7 @@ func _ready() -> void:
 	#var instanced_scene = some_scene.instance() # returns an instance of the scene
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
-	ChangeScene(0,sceneparent.get_child(0).get_child(0).position)
+	ChangeScene(0,spawn)
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
