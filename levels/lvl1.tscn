@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ckyoe5ncvriam" path="res://scripts/area_2d.gd" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="4_wg0iv"]
 [ext_resource type="Texture2D" uid="uid://cdybxtew17txu" path="res://textures/WeightingDownCompanionCube.png" id="5_bnw0w"]
+[ext_resource type="Script" uid="uid://0tc5o6nhi0pj" path="res://levels/box.gd" id="6_l8ly6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb48q"]
 texture = ExtResource("1_xkndl")
@@ -138,16 +139,18 @@ shape = SubResource("RectangleShape2D_xrivr")
 [node name="Spring" parent="." unique_id=911301289 instance=ExtResource("4_wg0iv")]
 position = Vector2(284, 125)
 
-[node name="Box" type="Node2D" parent="." unique_id=2124977626]
+[node name="Box" type="Node2D" parent="." unique_id=2124977626 groups=["weighted"]]
 position = Vector2(136, 34)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1191963949]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Box" unique_id=1191963949 groups=["weighted"]]
+position = Vector2(-136, -34)
 collision_layer = 3
+script = ExtResource("6_l8ly6")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=820378083]
+[node name="Sprite2D" type="Sprite2D" parent="Box/CharacterBody2D" unique_id=820378083]
 position = Vector2(136, 34)
 texture = ExtResource("5_bnw0w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1762889554]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box/CharacterBody2D" unique_id=1762889554]
 position = Vector2(136, 34)
 shape = SubResource("RectangleShape2D_13qdw")
