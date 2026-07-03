@@ -8,6 +8,7 @@ var jump_velocity = -200.0
 
 var can_walljump = true
 var walljump = true
+@onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D
 @export var snapback_length = 18 # in buffer_size mult
 #multiply it by interwal to get length i second
@@ -80,6 +81,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		pos_buffer.clear()
 		area.get_parent().call_deferred("queue_free")
 	elif area.id == "spring":
+		spring_sfx.play()
 		gravity -= 1
 		if gravity <5:
 			gravity = 5

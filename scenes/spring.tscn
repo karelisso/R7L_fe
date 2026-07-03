@@ -23,3 +23,5 @@ script = ExtResource("3_iudvb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=591194738]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_lmt8p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
