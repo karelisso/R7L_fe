@@ -24,6 +24,11 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg")
 
+[global_group]
+
+manager=""
+weighted=""
+
 [input]
 
 jump={
