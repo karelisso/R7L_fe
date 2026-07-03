@@ -1,6 +1,10 @@
 extends Control
 
 @onready var scene
+@onready var background: Panel = $CanvasLayer/background
+
+func _ready() -> void:
+	background.modulate = Color(0, 0, 0, 0.5)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
