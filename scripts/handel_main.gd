@@ -33,7 +33,7 @@ func ChangeScene(tooo:int,x:int,y:int):
 	var some_scene = load(stages[tooo]) # returns a PackedScene
 	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
 	sceneparent.add_child(instanced_scene)
-	player.position = Vector2(x,y)
+	player.position = sceneparent.get_child(0).get_child(0).position
 
 func toggle_pause():
 	if not is_paused:
