@@ -26,13 +26,15 @@ func _process(delta: float) -> void:
 	get_tree().call_group("weighted","SetGravity",gravity)
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
+	
 	gravity += gravity_growth
+	print(get_tree().get_nodes_in_group("manager"))
 	if carried != null:
 		carried.global_position = global_position +Vector2(0,-20) 
 		if not Input.is_action_pressed("pick"):
 			carried.set_collision_layer_value(2,true)
 			if direction == 0:
-				carried.velocity += Vector2(0,-500)
+				carried.velocity += Vector2(0,-50)
 			else:
 				carried.velocity += Vector2(100*direction,10)
 			carried = null
@@ -82,7 +84,6 @@ func _physics_process(_delta):
 	
 	for i in get_slide_collision_count():
 		var im = get_slide_collision(i).get_collider()
-		print(Time)
 		if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
 			var x = 3
 			carried = im
@@ -93,7 +94,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.id == "level_loader":
 		area.call_deferred("loadlevel")
 		pos_buffer.clear()
-		area.get_parent().call_deferred("queue_free")
+		#area.get_parent().call_deferred("queue_free")
 	elif area.id == "spring":
 		gravity -= 1
 		if gravity <5:

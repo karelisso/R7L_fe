@@ -10,5 +10,5 @@ extends Area2D
 signal LoadLevel
 func loadlevel():
 	get_tree().call_group("manager",
-	"ChangeScene",lvl,pos_x,pos_y)
+	"ChangeScene",lvl,Vector2(pos_x,pos_y) )
 	
