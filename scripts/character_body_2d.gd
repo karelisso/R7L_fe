@@ -17,6 +17,7 @@ var snapback_interwal = 2 #in frames
 var snapback_counter=0
 var id = "player"
 var pos_buffer:PackedVector2Array
+var death = false
 @onready var carried:CharacterBody2D
 func _ready() -> void:
 
@@ -73,8 +74,8 @@ func _physics_process(_delta):
 	else:
 		walljump = true
 		if Input.is_action_pressed("down"):
-			$CollisionShape2D.scale = Vector2(0.7,0.4)
-			$CollisionShape2D.position =Vector2(0,5)
+			$CollisionShape2D.scale = Vector2(0.7,0.7)
+			$CollisionShape2D.position =Vector2(0,4)
 			if velocity.x >0.2:
 				anim.play("crawlright")
 			elif velocity.x < -0.2:
@@ -82,8 +83,8 @@ func _physics_process(_delta):
 			else:
 				anim.play("crouch")
 		else:
-			$CollisionShape2D.scale = Vector2(0.7,1)
-			$CollisionShape2D.position =Vector2(0,0)
+			$CollisionShape2D.scale = Vector2(0.7,0.7)
+			$CollisionShape2D.position =Vector2(0,4)
 			if velocity.x >0.2:
 				anim.play("walkrigh")
 			elif velocity.x < -0.2:
@@ -105,6 +106,8 @@ func _physics_process(_delta):
 			var x = 3
 			carried = im
 			carried.set_collision_layer_value(2,false)
+		if im.is_in_group("Hazard"):
+			death = true
 		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
