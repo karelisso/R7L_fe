@@ -32,7 +32,8 @@ func ChangeScene(tooo:int,pos:Vector2):
 		n.queue_free()
 	for child in get_children():
 		if child is Label:
-			reparent(child,true)
+			pass
+			#reparent(child,true)
 	var some_scene = load(stages[tooo]) # returns a PackedScene
 	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
 	sceneparent.add_child(instanced_scene)
