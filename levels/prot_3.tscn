@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://8di55rqr1k8g" path="res://textures/tiles/kek_oldalak_vulcanic_03.png" id="2_dfjjl"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="3_ilhis"]
 [ext_resource type="Texture2D" uid="uid://cgywcmmytmma5" path="res://textures/tiles/kek_oldalak_10_verzio.png" id="3_sd18g"]
-[ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="5_at1ld"]
 [ext_resource type="PackedScene" uid="uid://c8p36jxto4lh4" path="res://scenes/WeightedCompanionCube.tscn" id="5_ep78u"]
 [ext_resource type="PackedScene" uid="uid://du35spkfjjmuc" path="res://scenes/Switch.tscn" id="6_dfjjl"]
 [ext_resource type="PackedScene" uid="uid://dcndhrnee5n0q" path="res://scenes/Door.tscn" id="7_at1ld"]
@@ -330,6 +329,9 @@ texture = ExtResource("2_5722l")
 [sub_resource type="TileSet" id="TileSet_nvotg"]
 sources/0 = SubResource("TileSetAtlasSource_kx6l7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(12, 20)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vm7no"]
 texture = ExtResource("1_at1ld")
 0:0/0 = 0
@@ -367,9 +369,6 @@ texture = ExtResource("1_at1ld")
 [sub_resource type="TileSet" id="TileSet_xrivr"]
 sources/0 = SubResource("TileSetAtlasSource_vm7no")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(188, 20)
-
 [node name="level1" type="Node2D" unique_id=891973835]
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1061429715]
@@ -395,7 +394,15 @@ tile_set = SubResource("TileSet_nvotg")
 [node name="Spring" parent="." unique_id=911301289 instance=ExtResource("3_ilhis")]
 position = Vector2(126, 54)
 
-[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("5_at1ld")]
+[node name="Area2D" type="Area2D" parent="." unique_id=1302724983]
+position = Vector2(215, 1)
+script = ExtResource("12_x2atu")
+lvl = 3
+pos_x = -137
+pos_y = 56
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1375467748]
+shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="box" parent="." unique_id=1342631449 instance=ExtResource("5_ep78u")]
 position = Vector2(29, -21)
@@ -414,7 +421,7 @@ position = Vector2(252, 53)
 
 [node name="Switch2" parent="." unique_id=1068920491 node_paths=PackedStringArray("door") instance=ExtResource("6_dfjjl")]
 position = Vector2(275, 4)
-min_range = 15
+min_range = 22
 permament = true
 door = NodePath("../Door2")
 
@@ -443,7 +450,7 @@ lvl = 2
 pos_x = 200
 pos_y = 56
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1375467748]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=426453604]
 shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="DeathArea" parent="." unique_id=1114980980 instance=ExtResource("13_8l1os")]

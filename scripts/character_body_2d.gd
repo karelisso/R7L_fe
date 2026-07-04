@@ -9,7 +9,7 @@ var acceleration = 50
 var jump_velocity = -200.0
 var start_gravity
 var star_jump
-var can_walljump = true
+var can_walljump = false
 var walljump = true
 @onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D
@@ -80,9 +80,9 @@ func _physics_process(_delta):
 			snapback_counter = 0	
 	if not is_on_floor():
 		velocity.y += gravity
-		#if walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
-			#velocity.y = jump_velocity- gravity
-			#walljump = false
+		if can_walljump and walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
+			velocity.y = jump_velocity- gravity
+			walljump = false
 		anim.play("spin")
 	else:
 		walljump = true
