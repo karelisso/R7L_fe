@@ -193,7 +193,7 @@ tags = {
 }
 
 [node name="Character" type="CharacterBody2D" unique_id=466616266 groups=["player"]]
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_rkhd4")
 snapback_automatic = false
 

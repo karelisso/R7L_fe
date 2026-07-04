@@ -397,7 +397,7 @@ position = Vector2(126, 54)
 [node name="Area2D" type="Area2D" parent="." unique_id=1302724983]
 position = Vector2(215, 1)
 script = ExtResource("12_x2atu")
-lvl = 3
+lvl = 4
 pos_x = -137
 pos_y = 56
 gravity_ = 10.0
@@ -410,7 +410,7 @@ position = Vector2(29, -21)
 
 [node name="Switch" parent="." unique_id=767723140 node_paths=PackedStringArray("door") instance=ExtResource("6_dfjjl")]
 position = Vector2(-79, 16)
-min_range = 10
+min_range = 5
 max_range = -1
 door = NodePath("../Door")
 
@@ -422,7 +422,7 @@ position = Vector2(252, 53)
 
 [node name="Switch2" parent="." unique_id=1068920491 node_paths=PackedStringArray("door") instance=ExtResource("6_dfjjl")]
 position = Vector2(275, 4)
-min_range = 22
+min_range = 10
 permament = true
 door = NodePath("../Door2")
 

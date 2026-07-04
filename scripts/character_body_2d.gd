@@ -87,6 +87,7 @@ func _physics_process(_delta):
 	else:
 		walljump = true
 		if Input.is_action_pressed("down"):
+			set_collision_mask_value(4,false)
 			$CollisionShape2D.scale = Vector2(0.7,0.7)
 			$CollisionShape2D.position =Vector2(0,4)
 			if velocity.x >0.2:
@@ -96,6 +97,7 @@ func _physics_process(_delta):
 			else:
 				anim.play("crouch")
 		else:
+			set_collision_mask_value(4,true)
 			$CollisionShape2D.scale = Vector2(0.8,1)
 			$CollisionShape2D.position =Vector2(0,0.5)
 			if velocity.x >0.2:

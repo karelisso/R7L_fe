@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://dnqggsceqbdul"]
 
-[ext_resource type="Script" uid="uid://jb7xpet1teh6" path="res://scripts/Level_code.gd" id="1_20opy"]
+[ext_resource type="Script" path="res://scripts/Level_code.gd" id="1_20opy"]
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="2_20opy"]
 [ext_resource type="Texture2D" uid="uid://gh14aq73t4we" path="res://textures/tiles/FullSetRed.png" id="3_lfnxh"]
 [ext_resource type="Texture2D" uid="uid://blcd0v72x6123" path="res://textures/tiles/Hazards.png" id="4_ofchu"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="5_jq78i"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="6_8l0e1"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="7_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="7_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="8_ofchu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l0e1"]
 size = Vector2(928, 1232)
@@ -215,3 +216,7 @@ scale = Vector2(0.275, 0.44)
 [node name="DeathArea3" parent="." unique_id=1007376220 instance=ExtResource("7_lfnxh")]
 position = Vector2(40, 328)
 scale = Vector2(0.275, 0.44)
+
+[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("8_ofchu")]
+position = Vector2(-26, -174)
+lvl = 3

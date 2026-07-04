@@ -1,15 +1,17 @@
-[gd_scene format=4 uid="uid://ci06h2x38m6gg"]
+[gd_scene format=4 uid="uid://cyojln5rkgyeo"]
 
-[ext_resource type="Texture2D" uid="uid://q0kwqa2a76m7" path="res://textures/tiles/FullSet.png" id="1_jirdo"]
-[ext_resource type="Script" uid="uid://jb7xpet1teh6" path="res://scripts/Level_code.gd" id="1_gwceb"]
 [ext_resource type="Texture2D" uid="uid://ghv1ugn2qv5m" path="res://textures/tiles/FullSetBlue.png" id="1_jirdo"]
 [ext_resource type="Texture2D" uid="uid://u1adird0gdup" path="res://textures/tiles/hatter_merged.png" id="2_btoec"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="2_jirdo"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="3_bt44k"]
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="3_gwceb"]
 [ext_resource type="Texture2D" uid="uid://blcd0v72x6123" path="res://textures/tiles/Hazards.png" id="5_btoec"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="8_l53as"]
+[ext_resource type="Texture2D" uid="uid://d0fuy8ogn5bug" path="res://textures/tiles/noveny_banbusz.png" id="8_aerfg"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="8_l53as"]
 [ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="9_3sk1a"]
+[ext_resource type="Texture2D" uid="uid://dpvxklmc5li1q" path="res://textures/tiles/noveny_banbusz_02.png" id="9_nmsli"]
+[ext_resource type="Texture2D" uid="uid://cr76v56r5lnse" path="res://textures/tiles/noveny_hid_03.png" id="10_betor"]
+[ext_resource type="Texture2D" uid="uid://cy7qi7cgofgne" path="res://textures/tiles/inda.png" id="11_vjtdm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(688, 416)
@@ -315,6 +317,34 @@ texture = ExtResource("2_btoec")
 sources/0 = SubResource("TileSetAtlasSource_kx6l7")
 sources/5 = SubResource("TileSetAtlasSource_l53as")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw3c"]
+texture = ExtResource("8_aerfg")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrvbd"]
+texture = ExtResource("9_nmsli")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oqlok"]
+texture = ExtResource("10_betor")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7nvrk"]
+texture = ExtResource("11_vjtdm")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_13qdw"]
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_bgw3c")
+sources/1 = SubResource("TileSetAtlasSource_lrvbd")
+sources/2 = SubResource("TileSetAtlasSource_oqlok")
+sources/3 = SubResource("TileSetAtlasSource_7nvrk")
+
 [node name="level1" type="Node2D" unique_id=891973835]
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1061429715]
@@ -354,6 +384,12 @@ scale = Vector2(2.4, 1)
 [node name="DeathArea2" parent="." unique_id=452106525 instance=ExtResource("8_l53as")]
 position = Vector2(360, 264)
 scale = Vector2(5.54, 1)
+
+[node name="OneWay" type="TileMapLayer" parent="." unique_id=1846427242]
+position = Vector2(8, 199.99998)
+scale = Vector2(0.71400654, 0.71400654)
+tile_map_data = PackedByteArray("AAAGAPr/AgAAAAAAAAAHAPr/AgAAAAAAAAAIAPr/AgAAAAAAAAAJAPr/AgAAAAAAAAAKAPr/AgAAAAAAAAALAPr/AgAAAAAAAAAMAPr/AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_13qdw")
 
 [node name="Label" type="Label" parent="." unique_id=1192133748]
 offset_left = 8.0
