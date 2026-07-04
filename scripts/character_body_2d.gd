@@ -121,16 +121,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			gravity -= 1
 			if gravity <5:
 				gravity = 5
-				jump_velocity = -200
-				area.call_deferred("loadlevel")
-				pos_buffer.clear()
-				#area.get_parent().call_deferred("queue_free")
-			elif area.id == "spring":
-				gravity -= 1
-				if gravity <5:
-					gravity = 5
-				jump_velocity -= 100
-				area.get_parent().call_deferred("queue_free")
+			jump_velocity -= 100
+			area.get_parent().call_deferred("queue_free")
+		elif area.id == "hazard":
+			area.get_parent().death()
+
 func _draw() -> void:
 	if pos_buffer.size() > 0:
 		if not snapback_automatic:
