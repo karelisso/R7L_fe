@@ -40,14 +40,13 @@ func ChangeScene(tooo:int,pos:Vector2):
 			child.reparent(self.get_child(0),true)
 
 func SetGravity(f:float):
-	if not scene_loaded:
-		for child in find_children("*", "Label", true, false):
-			if child is Label:
-				var next:RemoteTransform2D = RemoteTransform2D.new()
-				next.remote_path = child.get_path()
-				child.add_sibling(next)	
-				child.reparent(self.get_child(0),true)	
-
+	#if not scene_loaded:
+		#for child in find_children("*", "Label", true, false):
+			#if child is Label:
+				#var next:RemoteTransform2D = RemoteTransform2D.new()
+				#child.add_sibling(next)	
+				#child.reparent(self.get_child(0),true)	
+				#next.remote_path = child.get_path()
 	scene_loaded = true
 
 	gravity = f
