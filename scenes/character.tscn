@@ -27,6 +27,10 @@ region = Rect2(96, 64, 32, 32)
 atlas = ExtResource("3_my7n2")
 region = Rect2(128, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dpix"]
+atlas = ExtResource("3_my7n2")
+region = Rect2(224, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ij4jk"]
 atlas = ExtResource("3_ij4jk")
 region = Rect2(0, 0, 32, 32)
@@ -109,6 +113,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0dpix")
+}],
+"loop": 1,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ij4jk")
 }, {
 "duration": 1.0,
@@ -182,10 +194,12 @@ tags = {
 [node name="Character" type="CharacterBody2D" unique_id=466616266]
 collision_mask = 2
 script = ExtResource("1_rkhd4")
+snapback_automatic = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1041434438]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874132991]
+scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=531432236]
@@ -202,7 +216,7 @@ shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1458269014]
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"crawlleft"
+animation = &"crouch"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1522120924]
 stream = SubResource("AudioStreamWAV_lrhn5")

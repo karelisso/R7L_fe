@@ -12,16 +12,20 @@ var walljump = true
 @onready var anim = $AnimatedSprite2D
 @export var snapback_length = 60 # in buffer_size mult
 #multiply it by interwal to get length i second
-var snapback_automatic = true
+@export var snapback_automatic = true
 var snapback_interwal = 2 #in frames
 var snapback_counter=0
 var id = "player"
 var pos_buffer:PackedVector2Array
 @onready var carried:CharacterBody2D
 func _ready() -> void:
+
 	gravity = 5.0
 	gravity_growth = 0.01
-	pos_buffer.resize(snapback_length)
+	if snapback_automatic:
+		pos_buffer.resize(snapback_length)
+	else:
+		pos_buffer.resize(snapback_length+2)
 	pos_buffer.fill(to_global(position) )
 func _process(delta: float) -> void:
 	queue_redraw()
@@ -69,13 +73,17 @@ func _physics_process(_delta):
 	else:
 		walljump = true
 		if Input.is_action_pressed("down"):
+			$CollisionShape2D.scale = Vector2(1,0.4)
+			$CollisionShape2D.position =Vector2(0,5)
 			if velocity.x >0.2:
 				anim.play("crawlright")
 			elif velocity.x < -0.2:
 				anim.play("crawlleft")
 			else:
-				anim.play("idl")
+				anim.play("crouch")
 		else:
+			$CollisionShape2D.scale = Vector2(1,1)
+			$CollisionShape2D.position =Vector2(0,0)
 			if velocity.x >0.2:
 				anim.play("walkrigh")
 			elif velocity.x < -0.2:
@@ -103,7 +111,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
 		if area.id == "level_loader":
 			area.call_deferred("loadlevel")
-			pos_buffer.clear()
+			if snapback_automatic:
+				pos_buffer.clear()
+			else:
+				pos_buffer.resize(snapback_length+2)
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "spring":
 			spring_sfx.play()
