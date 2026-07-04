@@ -67,9 +67,9 @@ func _physics_process(_delta):
 			snapback_counter = 0	
 	if not is_on_floor():
 		velocity.y += gravity
-		if walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
-			velocity.y = jump_velocity- gravity
-			walljump = false
+		#if walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
+			#velocity.y = jump_velocity- gravity
+			#walljump = false
 		anim.play("spin")
 	else:
 		walljump = true
@@ -106,7 +106,9 @@ func _physics_process(_delta):
 			var x = 3
 			carried = im
 			carried.set_collision_layer_value(2,false)
-		
+	
+	if Input.is_action_just_pressed("reset"):
+		die()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
@@ -127,7 +129,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			jump_velocity -= 100
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "hazard":
-			area.get_parent().death()
+			die()
 
 func _draw() -> void:
 	if pos_buffer.size() > 0:
@@ -145,3 +147,8 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 	$Camera2D.limit_top = boundstart.y
 	$Camera2D.limit_right = boundend.x
 	$Camera2D.limit_bottom = boundend.y
+func die():
+	var main_menu = load("res://scenes/main_menu.tscn")
+	var instance = main_menu.instantiate()
+	get_tree().get_root().get_child(0).add_sibling(instance)
+	get_tree().get_root().get_child(0).call_deferred("queue_free")
