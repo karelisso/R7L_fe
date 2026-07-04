@@ -11,5 +11,4 @@ pos_x = -137
 pos_y = 56
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1375467748]
-position = Vector2(2, 108)
 shape = SubResource("RectangleShape2D_xrivr")
