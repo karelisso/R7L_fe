@@ -51,6 +51,9 @@ text = "Volume:"
 
 [node name="VolumeSlider" type="HSlider" parent="CanvasLayer/BoxContainer" unique_id=1682242118]
 layout_mode = 2
-rounded = true
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [connection signal="button_down" from="CanvasLayer/BackButton" to="." method="_on_back_button_button_down"]
+[connection signal="value_changed" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
