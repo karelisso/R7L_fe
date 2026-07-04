@@ -61,6 +61,7 @@ text = "Settings"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2066450230]
 stream = SubResource("AudioStreamWAV_ekxnf")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="button_down" from="BoxContainer/StartButton" to="." method="_on_start_button_button_down"]
