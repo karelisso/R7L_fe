@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
-@export var gravity_growth:float = 0.02
+@export var gravity_growth:float = 0.05
 var gravity:float = 5.0
-var speed = 150.0
+var total_gravity # jump_velocity is beleszámít
+@export var base_speed = 150.0
+var speed = base_speed
 var acceleration = 50
 var jump_velocity = -200.0
 
@@ -44,7 +46,14 @@ func _physics_process(_delta):
 			else:
 				carried.velocity += Vector2(300*direction,-50)
 			carried = null
-		
+	
+	total_gravity = ((gravity - 5) / abs(jump_velocity / 2)) * 10 #jump_velocity is half effective, multiplied by 10 to apply to scale easily
+	if total_gravity >= 2:
+		die()
+	if total_gravity >= 1: #gradual effects here
+		scale.y = 1 - (total_gravity - 1) / 2
+		speed  = base_speed - (total_gravity - 1) * 100
+	
 	if snapback_automatic:
 		snapback_counter+=1
 		if snapback_counter > snapback_interwal:
