@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-@export var gravity_growth:float = 0.05
+@export var gravity_growth:float = 0.01
 var gravity:float = 5.0
 var total_gravity # jump_velocity is beleszámít
 @export var base_speed = 150.0
 var speed = base_speed
 var acceleration = 50
 var jump_velocity = -200.0
-
+var start_gravity
+var star_jump
 var can_walljump = true
 var walljump = true
 @onready var spring_sfx = $AudioStreamPlayer2
@@ -24,8 +25,10 @@ var current_lvl:int
 @onready var carried:CharacterBody2D
 func _ready() -> void:
 
-	gravity = 5.0
-	gravity_growth = 0.01
+	start_gravity=gravity
+	star_jump=jump_velocity
+	
+	
 	if snapback_automatic:
 		pos_buffer.resize(snapback_length)
 	else:
@@ -124,8 +127,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
 		if area.id == "level_loader":
 			area.call_deferred("loadlevel")
-			gravity = area.gravity_
-			jump_velocity = area.jump_velocty
+			start_gravity = area.gravity_
+			
+			star_jump = area.jump_velocty
+			gravity = start_gravity
+			jump_velocity = star_jump
 			current_lvl = area.lvl
 			if snapback_automatic:
 				pos_buffer.clear()
@@ -159,6 +165,8 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 	$Camera2D.limit_right = boundend.x
 	$Camera2D.limit_bottom = boundend.y
 func die():
+		gravity = start_gravity
+		jump_velocity = star_jump
 		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
 
 	#var main_menu = load("res://scenes/main_menu.tscn")
