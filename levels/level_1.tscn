@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://ci06h2x38m6gg"]
 
-[ext_resource type="Texture2D" uid="uid://v3jlycm7701u" path="res://textures/tiles/FullSetBlue.png" id="1_jirdo"]
+[ext_resource type="Texture2D" uid="uid://q0kwqa2a76m7" path="res://textures/tiles/FullSet.png" id="1_jirdo"]
+[ext_resource type="Texture2D" uid="uid://cgywcmmytmma5" path="res://textures/tiles/kek_oldalak_10_verzio.png" id="1_n46q3"]
+[ext_resource type="Texture2D" uid="uid://u1adird0gdup" path="res://textures/tiles/hatter_merged.png" id="2_btoec"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="2_jirdo"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="3_bt44k"]
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://levels/player_spawn.gd" id="3_gwceb"]
