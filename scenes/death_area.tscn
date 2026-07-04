@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://co33v678sh46a"]
+[gd_scene format=3 uid="uid://b4cvapkiw6lgx"]
 
-[ext_resource type="Script" uid="uid://dmu1ngl6jy4n6" path="res://scripts/death_area.gd" id="1_wtpbu"]
+[ext_resource type="Script" path="res://scripts/death_area.gd" id="1_wtpbu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt8p"]
 
