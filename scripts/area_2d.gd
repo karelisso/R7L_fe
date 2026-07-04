@@ -7,6 +7,9 @@ extends Area2D
 #set position for the next level
 @export var pos_x:int =50
 @export var pos_y:int =50
+@export var gravity_ =5.0
+@export var jump_velocty = -200
+
 signal LoadLevel
 func loadlevel():
 	get_tree().call_group("manager",

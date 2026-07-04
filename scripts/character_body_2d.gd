@@ -20,6 +20,7 @@ var snapback_counter=0
 var id = "player"
 var pos_buffer:PackedVector2Array
 var death = false
+var current_lvl:int
 @onready var carried:CharacterBody2D
 func _ready() -> void:
 
@@ -123,8 +124,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
 		if area.id == "level_loader":
 			area.call_deferred("loadlevel")
-			gravity = 5
-			jump_velocity = -200
+			gravity = area.gravity_
+			jump_velocity = -area.jump_velocty
+			current_lvl = area.lvl
 			if snapback_automatic:
 				pos_buffer.clear()
 			else:
