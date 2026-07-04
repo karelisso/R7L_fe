@@ -112,6 +112,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
 		if area.id == "level_loader":
 			area.call_deferred("loadlevel")
+			gravity = 5
+			jump_velocity = -200
 			if snapback_automatic:
 				pos_buffer.clear()
 			else:
