@@ -400,6 +400,7 @@ script = ExtResource("12_x2atu")
 lvl = 3
 pos_x = -137
 pos_y = 56
+gravity_ = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1375467748]
 shape = SubResource("RectangleShape2D_xrivr")
