@@ -127,7 +127,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			jump_velocity -= 100
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "hazard":
-			area.get_parent().death()
+			die()
 
 func _draw() -> void:
 	if pos_buffer.size() > 0:
