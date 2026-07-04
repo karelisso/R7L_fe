@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://ci06h2x38m6gg"]
 
-[ext_resource type="Texture2D" uid="uid://q0kwqa2a76m7" path="res://textures/tiles/FullSet.png" id="1_jirdo"]
 [ext_resource type="Script" uid="uid://jb7xpet1teh6" path="res://scripts/Level_code.gd" id="1_gwceb"]
 [ext_resource type="Texture2D" uid="uid://ghv1ugn2qv5m" path="res://textures/tiles/FullSetBlue.png" id="1_jirdo"]
 [ext_resource type="Texture2D" uid="uid://u1adird0gdup" path="res://textures/tiles/hatter_merged.png" id="2_btoec"]
@@ -316,6 +315,7 @@ sources/0 = SubResource("TileSetAtlasSource_kx6l7")
 sources/5 = SubResource("TileSetAtlasSource_l53as")
 
 [node name="level1" type="Node2D" unique_id=891973835]
+script = ExtResource("1_gwceb")
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1061429715]
 position = Vector2(40, 184)
@@ -355,35 +355,78 @@ scale = Vector2(2.4, 1)
 position = Vector2(360, 264)
 scale = Vector2(5.54, 1)
 
+[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("9_3sk1a")]
+position = Vector2(200, 192)
+scale = Vector2(0.085, 1.6)
+lvl = 1
+
 [node name="Label" type="Label" parent="." unique_id=1192133748]
-offset_left = 8.0
-offset_top = 199.99998
-offset_right = 142.61832
-offset_bottom = 276.92468
+offset_top = 199.99997
+offset_right = 156.86133
+offset_bottom = 222.99997
 scale = Vector2(0.71400654, 0.71400654)
-text = "Welcome!
-Use Arrows or
-WASD to move!"
+text = "Welcome!"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=1803113676]
+offset_top = 216.00002
+offset_right = 156.86275
+offset_bottom = 240.00002
+scale = Vector2(0.714, 0.714)
+text = "Use Arrows or"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="." unique_id=1723498369]
+offset_top = 232.00002
+offset_right = 156.86275
+offset_bottom = 255.00002
+scale = Vector2(0.714, 0.714)
+text = "WASD to move!"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=170675428]
-offset_left = 176.0
-offset_top = 59.0
-offset_right = 449.0
-offset_bottom = 82.0
+offset_left = 160.0
+offset_top = 48.0
+offset_right = 464.0
+offset_bottom = 96.0
 text = "Hurry! Gravity is quickly increasing!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="." unique_id=447648392]
 offset_left = 384.00003
 offset_top = 152.00002
 offset_right = 592.0
-offset_bottom = 201.00002
+offset_bottom = 175.00002
 scale = Vector2(0.6155167, 0.6155167)
-text = "Here, have a spring to help
-you you jump that gap!"
+text = "Here, have a spring to help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="." unique_id=1453662901]
+offset_left = 64.0
+offset_top = 95.99999
+offset_right = 198.61832
+offset_bottom = 118.99999
+scale = Vector2(0.71400654, 0.71400654)
+text = "Jump with Up"
 horizontal_alignment = 1
 
-[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("9_3sk1a")]
-position = Vector2(200, 192)
-scale = Vector2(0.085, 1.6)
-lvl = 1
+[node name="Label7" type="Label" parent="." unique_id=221581827]
+offset_left = 64.0
+offset_top = 111.99999
+offset_right = 198.61832
+offset_bottom = 135.0
+scale = Vector2(0.71400654, 0.71400654)
+text = "or Space!"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="." unique_id=1039236837]
+offset_left = 383.99997
+offset_top = 168.0
+offset_right = 592.0
+offset_bottom = 193.9944
+scale = Vector2(0.6155167, 0.6155167)
+text = "you jump that gap!"
+horizontal_alignment = 1
+vertical_alignment = 1
