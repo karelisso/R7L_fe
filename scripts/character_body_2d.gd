@@ -159,7 +159,9 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 	$Camera2D.limit_right = boundend.x
 	$Camera2D.limit_bottom = boundend.y
 func die():
-	var main_menu = load("res://scenes/main_menu.tscn")
-	var instance = main_menu.instantiate()
-	get_tree().get_root().get_child(0).add_sibling(instance)
-	get_tree().get_root().get_child(0).call_deferred("queue_free")
+		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
+
+	#var main_menu = load("res://scenes/main_menu.tscn")
+	#var instance = main_menu.instantiate()
+	#get_tree().get_root().get_child(0).add_sibling(instance)
+	#get_tree().get_root().get_child(0).call_deferred("queue_free")
