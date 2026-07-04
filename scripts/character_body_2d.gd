@@ -9,7 +9,7 @@ var acceleration = 50
 var jump_velocity = -200.0
 var start_gravity
 var star_jump
-var can_walljump = false
+var can_walljump = true
 var walljump = true
 @onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D

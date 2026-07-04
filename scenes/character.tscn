@@ -202,7 +202,6 @@ limit_left = -200
 limit_top = -100
 limit_right = 250
 limit_bottom = 100
-position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874132991]
