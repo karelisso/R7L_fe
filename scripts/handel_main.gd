@@ -6,9 +6,9 @@ extends Node2D
 @onready var sceneparent:Node = $CanvasLayer/SubViewportContainer/subviewport/Parent
 @onready var player = $CanvasLayer/SubViewportContainer/subviewport/Character
 @onready var player_anim_sprite = $CanvasLayer/SubViewportContainer/subviewport/Character/AnimatedSprite2D
-
+@onready var gui = $CanvasLayer
 var power:float
-
+var scene_loaded = false
 var is_paused = false
 
 func _ready() -> void:
@@ -30,15 +30,26 @@ func ChangeScene(tooo:int,pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
 		n.queue_free()
-	for child in get_children():
-		if child is Label:
-			pass
-			#reparent(child,true)
 	var some_scene = load(stages[tooo]) # returns a PackedScene
 	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
 	sceneparent.add_child(instanced_scene)
+	scene_loaded = false
 	#player.position = pos
+	for child in get_children():
+		if child is Label:
+			child.reparent(self.get_child(0),true)
+
 func SetGravity(f:float):
+	if not scene_loaded:
+		for child in find_children("*", "Label", true, false):
+			if child is Label:
+				var next:RemoteTransform2D = RemoteTransform2D.new()
+				next.remote_path = child.get_path()
+				child.add_sibling(next)	
+				child.reparent(self.get_child(0),true)	
+
+	scene_loaded = true
+
 	gravity = f
 func toggle_pause():
 	if not is_paused:
