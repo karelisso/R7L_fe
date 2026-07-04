@@ -217,6 +217,11 @@ scale = Vector2(0.275, 0.44)
 position = Vector2(40, 328)
 scale = Vector2(0.275, 0.44)
 
-[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("8_ofchu")]
-position = Vector2(-26, -174)
-lvl = 3
+[node name="Label" type="Label" parent="." unique_id=1453184260]
+offset_top = 768.0
+offset_right = 348.82898
+offset_bottom = 826.1382
+scale = Vector2(0.8256195, 0.8256195)
+text = "If you are stuck, press R to restart the level!"
+horizontal_alignment = 1
+vertical_alignment = 1
