@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ckyixv114q52i" path="res://sounds/sfx/Item_Pickup.wav" id="4_my7n2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt8p"]
+size = Vector2(20, 21)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_esqvk"]
 orientation = 2
@@ -205,6 +206,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874132991]
+position = Vector2(0, 0.5)
 scale = Vector2(0.8, 1)
 shape = SubResource("RectangleShape2D_lmt8p")
 
