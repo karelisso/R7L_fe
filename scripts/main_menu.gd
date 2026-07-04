@@ -2,10 +2,12 @@ extends Control
 
 @onready var main_scene = preload("res://scenes/Main.tscn")
 @onready var settings_menu = preload("res://scenes/settings_menu.tscn")
+var current_level: int
 
 func _on_start_button_button_down() -> void:
 	main_scene = load("res://scenes/Main.tscn")
 	var instance = main_scene.instantiate()
+	instance.current_level = current_level
 	add_sibling(instance)
 	call_deferred("queue_free")
 

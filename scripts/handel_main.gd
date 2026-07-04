@@ -7,6 +7,7 @@ extends Node2D
 @onready var player = $CanvasLayer/SubViewportContainer/subviewport/Character
 @onready var player_anim_sprite = $CanvasLayer/SubViewportContainer/subviewport/Character/AnimatedSprite2D
 @onready var gui = $CanvasLayer
+var current_level: int
 var power:float
 var scene_loaded = false
 var is_paused = false
@@ -16,8 +17,11 @@ func _ready() -> void:
 	#var instanced_scene = some_scene.instance() # returns an instance of the scene
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
-	ChangeScene(0,spawn)
-func _process(delta: float) -> void:
+	if current_level:
+		ChangeScene(current_level, spawn)
+	else:
+		ChangeScene(0,spawn)
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			var pause_menu = load("res://scenes/pause_menu.tscn")
@@ -26,10 +30,11 @@ func _process(delta: float) -> void:
 			toggle_pause()
 	text.text = str(gravity)
 
-func ChangeScene(tooo:int,pos:Vector2):
+func ChangeScene(tooo:int,_pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
 		n.queue_free()
+	current_level = tooo
 	var some_scene = load(stages[tooo]) # returns a PackedScene
 	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
 	sceneparent.add_child(instanced_scene)

@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 func _on_main_menu_button_button_down() -> void:
 	main_menu = load("res://scenes/main_menu.tscn")
 	var instance = main_menu.instantiate()
+	instance.current_level = get_parent().current_level
 	get_parent().add_sibling(instance)
 	get_parent().call_deferred("queue_free")
 
