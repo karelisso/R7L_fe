@@ -33,7 +33,7 @@ func ChangeScene(tooo:int,pos:Vector2):
 	var some_scene = load(stages[tooo]) # returns a PackedScene
 	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
 	sceneparent.add_child(instanced_scene)
-	player.position = pos
+	#player.position = pos
 func SetGravity(f:float):
 	gravity = f
 func toggle_pause():

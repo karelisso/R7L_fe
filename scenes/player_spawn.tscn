@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b7klhc5wa6hys"]
+
+[ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://levels/player_spawn.gd" id="1_evywo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(482, 329)
+
+[node name="PlayerSpawn" type="Node2D" unique_id=1061429715]
+script = ExtResource("1_evywo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=105576783]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=420835872]
+position = Vector2(141, -82.5)
+shape = SubResource("RectangleShape2D_13qdw")

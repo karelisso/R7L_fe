@@ -191,15 +191,21 @@ tags = {
 "encoder": "Lavf60.12.101"
 }
 
-[node name="Character" type="CharacterBody2D" unique_id=466616266]
+[node name="Character" type="CharacterBody2D" unique_id=466616266 groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_rkhd4")
 snapback_automatic = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1041434438]
+limit_left = -200
+limit_top = -100
+limit_right = 250
+limit_bottom = 100
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874132991]
-scale = Vector2(1, 0.5)
+scale = Vector2(0.7, 1)
 shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=531432236]
@@ -211,7 +217,7 @@ texture = ExtResource("2_lrhn5")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=47805040]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1471317511]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1471317511]
 shape = SubResource("RectangleShape2D_lmt8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1458269014]

@@ -41,7 +41,7 @@ func _physics_process(_delta):
 			if direction == 0:
 				carried.velocity += Vector2(0,-150)
 			else:
-				carried.velocity += Vector2(100*direction,-50)
+				carried.velocity += Vector2(300*direction,-50)
 			carried = null
 		
 	if snapback_automatic:
@@ -73,7 +73,7 @@ func _physics_process(_delta):
 	else:
 		walljump = true
 		if Input.is_action_pressed("down"):
-			$CollisionShape2D.scale = Vector2(1,0.4)
+			$CollisionShape2D.scale = Vector2(0.7,0.4)
 			$CollisionShape2D.position =Vector2(0,5)
 			if velocity.x >0.2:
 				anim.play("crawlright")
@@ -82,7 +82,7 @@ func _physics_process(_delta):
 			else:
 				anim.play("crouch")
 		else:
-			$CollisionShape2D.scale = Vector2(1,1)
+			$CollisionShape2D.scale = Vector2(0.7,1)
 			$CollisionShape2D.position =Vector2(0,0)
 			if velocity.x >0.2:
 				anim.play("walkrigh")
@@ -140,3 +140,10 @@ func _draw() -> void:
 				draw_circle(to_local(pos_buffer[0]) ,10,Color(0,1,0,1))
 		else:
 			draw_circle(to_local(pos_buffer[0]) ,10,Color(1,0,0,1))
+func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
+	global_position = pos
+	#boundstart = Vector2(200,300)
+	$Camera2D.limit_left = boundstart.x
+	$Camera2D.limit_top = boundstart.y
+	$Camera2D.limit_right = boundend.x
+	$Camera2D.limit_bottom = boundend.y

@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg")
 manager=""
 weighted=""
 box=""
+player=""
 
 [input]
 
