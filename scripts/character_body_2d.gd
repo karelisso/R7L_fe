@@ -106,8 +106,6 @@ func _physics_process(_delta):
 			var x = 3
 			carried = im
 			carried.set_collision_layer_value(2,false)
-		if im.is_in_group("Hazard"):
-			death = true
 		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
