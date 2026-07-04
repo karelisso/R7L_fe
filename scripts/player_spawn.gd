@@ -14,4 +14,5 @@ func _ready() -> void:
 		#limit_top = int(center.y - extents.y)
 		#limit_bottom = int(center.y + extents.y)
 	# Transform the calculated bounds into global coordinate space
+	print("yiipe")
 	get_tree().call_group("player","Setup",global_position,Vector2(int(center.x - extents.x),int(center.y - extents.y)),Vector2(int(center.x + extents.x),int(center.y + extents.y)))

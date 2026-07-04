@@ -35,9 +35,9 @@ func ChangeScene(tooo:int,pos:Vector2):
 	sceneparent.add_child(instanced_scene)
 	scene_loaded = false
 	#player.position = pos
-	for child in get_children():
-		if child is Label:
-			child.reparent(self.get_child(0),true)
+	#for child in get_children():
+		#if child is Label:
+			#child.reparent(self.get_child(0),true)
 
 func SetGravity(f:float):
 	#if not scene_loaded:

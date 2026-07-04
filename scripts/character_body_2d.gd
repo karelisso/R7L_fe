@@ -116,7 +116,6 @@ func _physics_process(_delta):
 	for i in get_slide_collision_count():
 		var im = get_slide_collision(i).get_collider()
 		if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
-			var x = 3
 			carried = im
 			carried.set_collision_layer_value(2,false)
 	
@@ -126,18 +125,20 @@ func _physics_process(_delta):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
 		if area.id == "level_loader":
-			area.call_deferred("loadlevel")
 			start_gravity = area.gravity_
 			
 			star_jump = area.jump_velocty
 			gravity = start_gravity
 			jump_velocity = star_jump
 			current_lvl = area.lvl
+			velocity = Vector2.ZERO
 			if snapback_automatic:
 				pos_buffer.clear()
 			else:
 				pos_buffer.resize(snapback_length+2)
+			area.call_deferred("loadlevel")
 			area.get_parent().call_deferred("queue_free")
+
 		elif area.id == "spring":
 			spring_sfx.play()
 			gravity -= 1
