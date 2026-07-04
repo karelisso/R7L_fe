@@ -229,7 +229,7 @@ stream = SubResource("AudioStreamWAV_lrhn5")
 volume_db = -5.0
 autoplay = true
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=650059771]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=938269214]
 stream = ExtResource("4_my7n2")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

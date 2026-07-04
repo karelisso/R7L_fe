@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var gravity_growth:float = 0.02
 var gravity:float = 5.0
-var speed = 150.0
+var speed = 100.0
 var acceleration = 50
 var jump_velocity = -200.0
 
