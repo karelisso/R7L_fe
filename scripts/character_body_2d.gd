@@ -14,6 +14,7 @@ var walljump = true
 var snapback_automatic = true
 var snapback_interwal = 2 #in frames
 var snapback_counter=0
+var id = "player"
 var pos_buffer:PackedVector2Array
 @onready var carried:CharacterBody2D
 func _ready() -> void:
@@ -26,17 +27,16 @@ func _process(delta: float) -> void:
 	get_tree().call_group("weighted","SetGravity",gravity)
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
-	
 	gravity += gravity_growth
-	print(get_tree().get_nodes_in_group("manager"))
 	if carried != null:
 		carried.global_position = global_position +Vector2(0,-20) 
+		carried.velocity = Vector2.ZERO
 		if not Input.is_action_pressed("pick"):
 			carried.set_collision_layer_value(2,true)
 			if direction == 0:
-				carried.velocity += Vector2(0,-50)
+				carried.velocity += Vector2(0,-150)
 			else:
-				carried.velocity += Vector2(100*direction,10)
+				carried.velocity += Vector2(100*direction,-50)
 			carried = null
 		
 	if snapback_automatic:
@@ -62,17 +62,25 @@ func _physics_process(_delta):
 	if not is_on_floor():
 		velocity.y += gravity
 		if walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
-			velocity.y = jump_velocity
+			velocity.y = jump_velocity- gravity
 			walljump = false
 		anim.play("spin")
 	else:
 		walljump = true
-		if velocity.x >0.2:
-			anim.play("walkrigh")
-		elif velocity.x < -0.2:
-			anim.play("walkleft")
+		if Input.is_action_pressed("down"):
+			if velocity.x >0.2:
+				anim.play("crawlright")
+			elif velocity.x < -0.2:
+				anim.play("crawlleft")
+			else:
+				anim.play("idl")
 		else:
-			anim.play("idl")
+			if velocity.x >0.2:
+				anim.play("walkrigh")
+			elif velocity.x < -0.2:
+				anim.play("walkleft")
+			else:
+				anim.play("idl")
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 
@@ -91,16 +99,19 @@ func _physics_process(_delta):
 		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.id == "level_loader":
-		area.call_deferred("loadlevel")
-		pos_buffer.clear()
-		#area.get_parent().call_deferred("queue_free")
-	elif area.id == "spring":
-		gravity -= 1
-		if gravity <5:
+	if "id" in area:
+		if area.id == "level_loader":
 			gravity = 5
-		jump_velocity -= 100
-		area.get_parent().call_deferred("queue_free")
+			jump_velocity = -200
+			area.call_deferred("loadlevel")
+			pos_buffer.clear()
+			#area.get_parent().call_deferred("queue_free")
+		elif area.id == "spring":
+			gravity -= 1
+			if gravity <5:
+				gravity = 5
+			jump_velocity -= 100
+			area.get_parent().call_deferred("queue_free")
 func _draw() -> void:
 	if pos_buffer.size() > 0:
 		if not snapback_automatic:

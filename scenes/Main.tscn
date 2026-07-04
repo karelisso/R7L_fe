@@ -6,10 +6,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_rxg2q"]
 font_size = 48
 
-[node name="main" type="Node2D" unique_id=1276813274 groups=["manager"]]
+[node name="main" type="Node2D" unique_id=1276813274 groups=["manager", "weighted"]]
 script = ExtResource("1_uu6xs")
 spawn = Vector2(100, 56)
-stages = PackedStringArray("res://levels/level_1.tscn", "res://levels/lvl1.tscn")
+stages = PackedStringArray("res://levels/level_1.tscn", "res://levels/level_2.tscn", "res://levels/lvl1.tscn", "res://levels/lvl2.tscn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1170587652]
 
@@ -36,6 +36,8 @@ render_target_update_mode = 4
 
 [node name="Character" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=466616266 instance=ExtResource("2_uu6xs")]
 position = Vector2(230, 150)
+collision_layer = 4
+collision_mask = 1
 
 [node name="Parent" type="Node" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=431184468]
 

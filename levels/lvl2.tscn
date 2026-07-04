@@ -54,7 +54,8 @@ position = Vector2(-9, 127)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_p65l6")
-pos_x = 370
+pos_x = -157
+pos_y = 56
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1321574691]
 position = Vector2(13, 1)

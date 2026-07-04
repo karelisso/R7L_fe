@@ -140,8 +140,9 @@ position = Vector2(126, 54)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1328144865]
 script = ExtResource("4_kx6l7")
-pos_x = 160
-pos_y = 120
+lvl = 1
+pos_x = -157
+pos_y = 56
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2073299615]
 position = Vector2(2, 108)

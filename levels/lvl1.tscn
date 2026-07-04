@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bwolb7jqaiggg" path="res://textures/tiles/teszt kisebb talaj ződ merged.png" id="2_xkndl"]
 [ext_resource type="Script" uid="uid://ckyoe5ncvriam" path="res://scripts/area_2d.gd" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="4_wg0iv"]
-[ext_resource type="Texture2D" uid="uid://cdybxtew17txu" path="res://textures/WeightingDownCompanionCube.png" id="5_bnw0w"]
-[ext_resource type="Script" uid="uid://0tc5o6nhi0pj" path="res://levels/box.gd" id="6_l8ly6"]
+[ext_resource type="PackedScene" uid="uid://c8p36jxto4lh4" path="res://scenes/WeightedCompanionCube.tscn" id="6_0gn07"]
+[ext_resource type="PackedScene" uid="uid://du35spkfjjmuc" path="res://scenes/Switch.tscn" id="7_0qoj2"]
+[ext_resource type="PackedScene" uid="uid://dcndhrnee5n0q" path="res://scenes/Door.tscn" id="8_6idix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb48q"]
 texture = ExtResource("1_xkndl")
@@ -109,9 +110,6 @@ sources/4 = SubResource("TileSetAtlasSource_l8ly6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(20, 33)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
-size = Vector2(16, 16)
-
 [node name="Game" type="Node2D" unique_id=748095446]
 z_index = 1
 
@@ -129,7 +127,7 @@ position = Vector2(372, 127)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_u44n3")
-lvl = 1
+lvl = 3
 pos_x = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=292177030]
@@ -139,16 +137,12 @@ shape = SubResource("RectangleShape2D_xrivr")
 [node name="Spring" parent="." unique_id=911301289 instance=ExtResource("4_wg0iv")]
 position = Vector2(284, 125)
 
-[node name="Box" type="Node2D" parent="." unique_id=2124977626 groups=["weighted"]]
-position = Vector2(166, 123)
+[node name="Switch" parent="." unique_id=767723140 node_paths=PackedStringArray("door") instance=ExtResource("7_0qoj2")]
+position = Vector2(153, 136)
+door = NodePath("../Door")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Box" unique_id=1191963949 groups=["weighted"]]
-collision_layer = 3
-input_pickable = true
-script = ExtResource("6_l8ly6")
+[node name="Door" parent="." unique_id=765512170 instance=ExtResource("8_6idix")]
+position = Vector2(355, 102)
 
-[node name="Sprite2D" type="Sprite2D" parent="Box/CharacterBody2D" unique_id=820378083]
-texture = ExtResource("5_bnw0w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box/CharacterBody2D" unique_id=1762889554]
-shape = SubResource("RectangleShape2D_13qdw")
+[node name="box" parent="." unique_id=1342631449 instance=ExtResource("6_0gn07")]
+position = Vector2(229, 97)
