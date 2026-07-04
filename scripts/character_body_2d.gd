@@ -37,6 +37,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
+	get_tree().call_group("playerseeker","SetPos",global_position)
+
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
 	gravity += gravity_growth
@@ -138,9 +140,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				pos_buffer.clear()
 			else:
 				pos_buffer.resize(snapback_length+2)
-			area.call_deferred("loadlevel")
-			area.get_parent().call_deferred("queue_free")
-
+			#area.call_deferred("loadlevel")
+			#area.get_parent().call_deferred("queue_free")
+			die()
 		elif area.id == "spring":
 			spring_sfx.play()
 			gravity -= 1
@@ -170,6 +172,10 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 func die():
 		gravity = start_gravity
 		jump_velocity = star_jump
+		speed = base_speed
+		total_gravity=0
+		scale.y = 1
+		
 		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
 
 	#var main_menu = load("res://scenes/main_menu.tscn")

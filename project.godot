@@ -30,6 +30,7 @@ manager=""
 weighted=""
 box=""
 player=""
+playerseeker=""
 
 [input]
 
