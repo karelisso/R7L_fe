@@ -8,6 +8,7 @@ var jump_velocity = -200.0
 
 var can_walljump = true
 var walljump = true
+@onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D
 @export var snapback_length = 60 # in buffer_size mult
 #multiply it by interwal to get length i second
@@ -101,17 +102,24 @@ func _physics_process(_delta):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
 		if area.id == "level_loader":
-			gravity = 5
-			jump_velocity = -200
 			area.call_deferred("loadlevel")
 			pos_buffer.clear()
-			#area.get_parent().call_deferred("queue_free")
+			area.get_parent().call_deferred("queue_free")
 		elif area.id == "spring":
+			spring_sfx.play()
 			gravity -= 1
 			if gravity <5:
 				gravity = 5
-			jump_velocity -= 100
-			area.get_parent().call_deferred("queue_free")
+				jump_velocity = -200
+				area.call_deferred("loadlevel")
+				pos_buffer.clear()
+				#area.get_parent().call_deferred("queue_free")
+			elif area.id == "spring":
+				gravity -= 1
+				if gravity <5:
+					gravity = 5
+				jump_velocity -= 100
+				area.get_parent().call_deferred("queue_free")
 func _draw() -> void:
 	if pos_buffer.size() > 0:
 		if not snapback_automatic:
