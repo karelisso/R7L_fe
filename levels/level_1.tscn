@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://ci06h2x38m6gg"]
 
-[ext_resource type="Script" uid="uid://jb7xpet1teh6" path="res://scripts/Level_code.gd" id="1_gwceb"]
 [ext_resource type="Texture2D" uid="uid://q0kwqa2a76m7" path="res://textures/tiles/FullSet.png" id="1_jirdo"]
 [ext_resource type="Texture2D" uid="uid://u1adird0gdup" path="res://textures/tiles/hatter_merged.png" id="2_btoec"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="2_jirdo"]
@@ -393,7 +392,6 @@ sources/0 = SubResource("TileSetAtlasSource_kx6l7")
 sources/5 = SubResource("TileSetAtlasSource_l53as")
 
 [node name="level1" type="Node2D" unique_id=891973835]
-script = ExtResource("1_gwceb")
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1061429715]
 position = Vector2(40, 184)
