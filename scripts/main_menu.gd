@@ -5,6 +5,7 @@ extends Control
 @onready var start_button: TextureButton = $BoxContainer/StartButton
 @onready var focus_goblin: TextureButton = $BoxContainer/FocusGoblin
 var is_mouse_focus = false
+var is_settings_open = false
 
 func _ready() -> void:
 	start_button.grab_focus()
