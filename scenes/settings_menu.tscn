@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c8vq7qbtiem4x"]
 
 [ext_resource type="Script" uid="uid://dm58gfcq8tm4r" path="res://scripts/settings_menu.gd" id="1_05p07"]
+[ext_resource type="Texture2D" uid="uid://rdco1k56jgh6" path="res://textures/buttons/back_inactive.png" id="2_wswnh"]
+[ext_resource type="Texture2D" uid="uid://dsd0kv6gjhaaj" path="res://textures/buttons/back_active.png" id="3_labj1"]
 
 [node name="SettingsMenu" type="Control" unique_id=1175756560]
 layout_mode = 3
@@ -20,10 +22,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackButton" type="Button" parent="CanvasLayer" unique_id=624319492]
-offset_right = 112.0
-offset_bottom = 31.0
-text = "Back"
+[node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=110130661]
+custom_minimum_size = Vector2(135, 45)
+offset_right = 135.0
+offset_bottom = 45.0
+texture_normal = ExtResource("2_wswnh")
+texture_hover = ExtResource("3_labj1")
+stretch_mode = 0
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=2146124319]
 anchors_preset = 8
