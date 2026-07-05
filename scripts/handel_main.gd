@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 			add_child(instanced_scene)
 			toggle_pause()
 	#text.text = str(effective)
-	bar.value = 100-100*effective/2
+	bar.value = 100 -100*effective/2
 func ChangeScene(tooo:int,_pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)

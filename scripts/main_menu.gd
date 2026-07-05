@@ -36,3 +36,10 @@ func _on_button_mouse_entered() -> void:
 
 func _on_button_mouse_exited() -> void:
 	is_mouse_focus = false
+
+
+func _on_bonus_button_down() -> void:
+	main_scene = load("res://scenes/Second.tscn"  )
+	var instance = main_scene.instantiate()
+	add_sibling(instance)
+	call_deferred("queue_free")
