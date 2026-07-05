@@ -224,6 +224,15 @@ scale = Vector2(0.7579933, 0.7579933)
 text = "to crawl!"
 horizontal_alignment = 1
 
+[node name="Label5" type="Label" parent="." unique_id=607330698]
+offset_left = 224.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = -152.0
+text = "Big jump!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DeathArea" parent="." unique_id=1114980980 instance=ExtResource("7_ep78u")]
 position = Vector2(200, 72)
 scale = Vector2(0.275, 0.44)

@@ -44,6 +44,7 @@ collision_layer = 1
 [node name="Parent" type="Node" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=431184468]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1242321196]
+visible = false
 offset_left = 28.0
 offset_top = 39.0
 offset_right = 133.0
