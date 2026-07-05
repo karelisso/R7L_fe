@@ -291,7 +291,7 @@ stream = ExtResource("6_a5ia6")
 
 [node name="AudioStreamPlayerJump" type="AudioStreamPlayer" parent="." unique_id=564447318]
 stream = ExtResource("7_a5ia6")
-volume_db = 6.0
+volume_db = -10.0
 
 [node name="AudioStreamPlayerWalk" type="AudioStreamPlayer" parent="." unique_id=1586334276]
 stream = ExtResource("8_0dpix")
