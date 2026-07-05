@@ -1,0 +1,27 @@
+[gd_scene format=4 uid="uid://carbf7qsp83vm"]
+
+[ext_resource type="Shader" uid="uid://b362defooispw" path="res://shader/cutcircle.gdshader" id="1_s1555"]
+[ext_resource type="Texture2D" uid="uid://cy7qi7cgofgne" path="res://textures/tiles/inda.png" id="2_m6dpu"]
+[ext_resource type="Script" uid="uid://b305nxb6lfftm" path="res://scripts/get_player_pos.gd" id="3_k00js"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjtdm"]
+shader = ExtResource("1_s1555")
+shader_parameter/player_position = Vector2(0, 0)
+shader_parameter/cut_radius = 32.0
+shader_parameter/feather = 16.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emylt"]
+texture = ExtResource("2_m6dpu")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xrivr"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_emylt")
+
+[node name="TileMapLayer" type="TileMapLayer" unique_id=1392233273 groups=["playerseeker"]]
+material = SubResource("ShaderMaterial_vjtdm")
+tile_map_data = PackedByteArray("AAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAABAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAABAAAAAAAcAAgAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAgAAAAAAAAAAAAeAAkAAAAAAAAAAAAeAAoAAAAAAAAAAAAeAAsAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAgAAAAAAAAAAAAfAAkAAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAcAAcAAAABAAAAAAAdAAcAAAABAAAAAAAeAAcAAAABAAAAAAAfAAcAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_xrivr")
+script = ExtResource("3_k00js")

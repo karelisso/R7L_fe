@@ -1,5 +1,5 @@
 extends TileMapLayer
-@export_flags_2d_physics var player_layer_bit: int = 3
+#@export_flags_2d_physics var player_layer_bit: int = 3
 var Ppos
 func SetPos(pos:Vector2):
 	Ppos = pos
