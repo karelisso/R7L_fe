@@ -70,7 +70,7 @@ func _physics_process(_delta):
 			carried.get_child(2).set_collision_layer_value(1,false)
 	total_gravity = ((gravity - 5) / abs(jump_velocity / 2)) * 10 #jump_velocity is half effective, multiplied by 10 to apply to scale easily
 	if total_gravity >= 2:
-		die(0.2)
+		die(0.2,false)
 	elif total_gravity >= 1: #gradual effects here
 		scale.y = 1 - (total_gravity - 1) / 2
 		speed = base_speed - (total_gravity - 1) * 100
@@ -142,7 +142,7 @@ func _physics_process(_delta):
 			#carried.set_collision_layer_value(2,false)
 	
 	if Input.is_action_just_pressed("reset"):
-		die(0.05)
+		die(0.05,true)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
@@ -160,7 +160,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				pos_buffer.resize(snapback_length+2)
 			#area.call_deferred("loadlevel")
 			#area.get_parent().call_deferred("queue_free")
-			die(1)
+			die(1,true)
 		elif area.id == "spring":
 			spring_sfx.play()
 			gravity -= 1
@@ -169,7 +169,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			jump_velocity -= 100
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "hazard":
-			die(0.2)
+			die(0.5,false)
 	
 func _draw() -> void:
 	if pos_buffer.size() > 0:
@@ -187,7 +187,7 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 	$Camera2D.limit_top = boundstart.y
 	$Camera2D.limit_right = boundend.x
 	$Camera2D.limit_bottom = boundend.y
-func die(timeRRR:float):
+func die(timeRRR:float,wins:bool):
 		gravity = start_gravity
 		jump_velocity = star_jump
 		speed = base_speed
@@ -197,8 +197,12 @@ func die(timeRRR:float):
 		#get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
 		respawn_delay_timer = timeRRR
 		death = true
+		if wins:
+			anim.modulate = Color(0, 0, 0, 0)
+		else:
+			anim.play("HeavyIsDead")
 		set_physics_process(false)
-		anim.modulate = Color(0, 0, 0, 0)
+		#
 
 	#var main_menu = load("res://scenes/main_menu.tscn")
 	#var instance = main_menu.instantiate()
