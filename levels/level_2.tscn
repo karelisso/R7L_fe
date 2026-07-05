@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://3kf8m6iac0gl"]
 
-[ext_resource type="Script" path="res://scripts/Level_code.gd" id="1_pqqg8"]
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="2_0srwa"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="2_5722l"]
 [ext_resource type="Texture2D" uid="uid://ghv1ugn2qv5m" path="res://textures/tiles/FullSetBlue.png" id="3_0srwa"]
@@ -148,7 +147,6 @@ texture = ExtResource("2_5722l")
 sources/0 = SubResource("TileSetAtlasSource_ep78u")
 
 [node name="level2" type="Node2D" unique_id=1059608782]
-script = ExtResource("1_pqqg8")
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1855694517]
 position = Vector2(88, 72)
