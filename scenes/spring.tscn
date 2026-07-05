@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dk5lp8utd41y7" path="res://textures/objects/shiny_spring.png" id="2_f6w1c"]
 [ext_resource type="Script" uid="uid://dlurwb51dcreq" path="res://scripts/spring.gd" id="3_f6w1c"]
-[ext_resource type="Script" uid="uid://sbxfwuckcfu2" path="res://scripts/spring_area_2d.gd" id="3_iudvb"]
+[ext_resource type="Script" uid="uid://cgnhh5nkep8w7" path="res://scripts/spring_area_2d.gd" id="3_iudvb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lmt8p"]
 orientation = 2

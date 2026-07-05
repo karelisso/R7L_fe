@@ -34,7 +34,7 @@ func _ready() -> void:
 	else:
 		pos_buffer.resize(snapback_length+2)
 	pos_buffer.fill(to_global(position) )
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
 	get_tree().call_group("playerseeker","SetPos",global_position)
@@ -56,9 +56,12 @@ func _physics_process(_delta):
 	total_gravity = ((gravity - 5) / abs(jump_velocity / 2)) * 10 #jump_velocity is half effective, multiplied by 10 to apply to scale easily
 	if total_gravity >= 2:
 		die()
-	if total_gravity >= 1: #gradual effects here
+	elif total_gravity >= 1: #gradual effects here
 		scale.y = 1 - (total_gravity - 1) / 2
-		speed  = base_speed - (total_gravity - 1) * 100
+		speed = base_speed - (total_gravity - 1) * 100
+	else:
+		speed = base_speed
+		scale.y = 1
 	
 	if snapback_automatic:
 		snapback_counter+=1

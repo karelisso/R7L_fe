@@ -17,7 +17,7 @@ func _ready() -> void:
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
 	ChangeScene(0,spawn)
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			var pause_menu = load("res://scenes/pause_menu.tscn")
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 			toggle_pause()
 	text.text = str(gravity)
 
-func ChangeScene(tooo:int,pos:Vector2):
+func ChangeScene(tooo:int,_pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
 		n.queue_free()
