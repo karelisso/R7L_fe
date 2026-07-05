@@ -354,7 +354,7 @@ scale = Vector2(0.44, 0.275)
 
 [node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("12_hpofx")]
 position = Vector2(401, 113)
-lvl = 1
+lvl = 2
 
 [node name="Spring" parent="." unique_id=1970454271 instance=ExtResource("13_m4f2g")]
 position = Vector2(72, 296)
@@ -367,21 +367,19 @@ position = Vector2(552, 152)
 
 [node name="Door" parent="." unique_id=765512170 instance=ExtResource("13_pecdw")]
 position = Vector2(168, 80)
-scale = Vector2(0.715, 1.385)
 
 [node name="Door2" parent="." unique_id=137996703 instance=ExtResource("13_pecdw")]
 position = Vector2(120, 320)
-scale = Vector2(0.745, 1.39)
 
 [node name="Door3" parent="." unique_id=149327849 instance=ExtResource("13_pecdw")]
-position = Vector2(400, 72)
-scale = Vector2(2.955, 0.7)
+position = Vector2(400, 88)
+rotation = 1.5707964
 
 [node name="box" parent="." unique_id=1342631449 instance=ExtResource("14_qlo87")]
 position = Vector2(516, 320)
 
 [node name="Switch" parent="." unique_id=767723140 node_paths=PackedStringArray("door") groups=["box"] instance=ExtResource("15_6j3jq")]
-position = Vector2(504, 88)
+position = Vector2(505, 92)
 min_range = 15
 permament = true
 door = NodePath("../Door")

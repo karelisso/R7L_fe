@@ -48,14 +48,15 @@ collision_layer = 1
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1242321196]
 visible = false
-offset_left = 28.0
-offset_top = 39.0
-offset_right = 133.0
-offset_bottom = 62.0
-text = "healht= 999%"
+offset_left = 121.0
+offset_top = -24.0
+offset_right = 288.0
+offset_bottom = 43.0
+text = "Gravity"
 label_settings = SubResource("LabelSettings_rxg2q")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1792261557]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 value = 100.0

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dcndhrnee5n0q"]
 
-[ext_resource type="Texture2D" uid="uid://easbtu4ry1nc" path="res://textures/objects/generic_door.jpg" id="1_yfgsh"]
+[ext_resource type="Texture2D" uid="uid://d0b8wevgq5q12" path="res://textures/objects/gate.png" id="1_yfgsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+size = Vector2(16, 32)
 
 [node name="Door" type="StaticBody2D" unique_id=765512170]
 collision_layer = 3
@@ -12,5 +13,4 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_b1lj4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=374862085]
-scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_yfgsh")

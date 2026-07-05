@@ -13,7 +13,7 @@ var can_walljump = true
 var walljump = true
 @onready var death_by_gravity = $DeathByGravity
 @onready var death_sfx = $Death
-@onready var spring_sfx = $AudioStreamPlayer2
+@onready var spring_sfx = $spring
 @onready var jump_sfx = $AudioStreamPlayerJump
 @onready var walk_sfx = $AudioStreamPlayerWalk
 @onready var thump_sfx = $AudioStreamPlayerThump
@@ -36,7 +36,7 @@ var respawn_delay_timer = -1
 @onready var carried:CharacterBody2D
 @onready var touched:CharacterBody2D
 func _ready() -> void:
-
+	bg_music_1.play()
 	start_gravity=gravity
 	star_jump=jump_velocity
 	set_physics_process(true)
@@ -49,6 +49,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
+	get_tree().call_group("weighted","SetEff",total_gravity)
+	
 	get_tree().call_group("playerseeker","SetPos",global_position)
 	#if respawn_delay_timer > -1:
 	respawn_delay_timer -= delta
