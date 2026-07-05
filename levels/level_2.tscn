@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="3_ilhis"]
 [ext_resource type="Texture2D" uid="uid://blcd0v72x6123" path="res://textures/tiles/Hazards.png" id="5_5722l"]
 [ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="5_at1ld"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="7_ep78u"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="7_ep78u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5uil"]
 size = Vector2(768, 560)
@@ -277,6 +277,5 @@ position = Vector2(424, 72)
 scale = Vector2(0.275, 0.44)
 
 [node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("5_at1ld")]
-position = Vector2(56, -144)
-scale = Vector2(0.085, 1.6)
+position = Vector2(56, -143)
 lvl = 2

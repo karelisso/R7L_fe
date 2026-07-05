@@ -9,7 +9,7 @@ font_size = 48
 [node name="main" type="Node2D" unique_id=1276813274 groups=["manager", "weighted"]]
 script = ExtResource("1_uu6xs")
 spawn = Vector2(100, 56)
-stages = PackedStringArray("res://levels/level_1.tscn", "res://levels/level_2.tscn", "res://levels/level_3.tscn", "res://levels/level_4.tscn", "res://levels/level_final.tscn", "res://levels/prot_3.tscn", "res://levels/prot_pipe.tscn")
+stages = PackedStringArray("res://levels/level_1.tscn", "res://levels/level_2.tscn", "res://levels/level_3.tscn", "res://levels/level_4.tscn", "res://levels/level_final.tscn", "res://levels/level_credit.tscn", "res://levels/prot_3.tscn", "res://levels/prot_pipe.tscn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1170587652]
 

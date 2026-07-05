@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c14k8w7bvjab2" path="res://textures/tiles/red_spikes.png" id="4_ofchu"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="5_jq78i"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="6_8l0e1"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="7_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="7_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="8_ofchu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l0e1"]
@@ -238,5 +238,4 @@ vertical_alignment = 1
 
 [node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("8_ofchu")]
 position = Vector2(-24, -176)
-scale = Vector2(0.085, 1.6)
 lvl = 3

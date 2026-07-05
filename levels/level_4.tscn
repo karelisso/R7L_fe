@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="4_t0qhu"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="5_dmnu2"]
 [ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="5_t6q73"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="7_0fd8o"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="7_0fd8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t0qhu"]
 size = Vector2(928, 1024)
@@ -205,7 +205,6 @@ tile_set = SubResource("TileSet_wk2cc")
 
 [node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("5_t6q73")]
 position = Vector2(8.000001, 0)
-scale = Vector2(0.085, 1.6)
 lvl = 4
 
 [node name="Spring" parent="." unique_id=911301289 instance=ExtResource("4_t0qhu")]

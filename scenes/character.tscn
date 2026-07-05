@@ -270,6 +270,8 @@ shape = SubResource("RectangleShape2D_lmt8p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1458269014]
 sprite_frames = SubResource("SpriteFrames_xrivr")
 animation = &"HeavyIsDead"
+frame = 4
+frame_progress = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1522120924]
 stream = SubResource("AudioStreamWAV_lrhn5")

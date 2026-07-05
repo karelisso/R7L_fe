@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bcy703wcbxuwk"]
+
+[ext_resource type="Script" uid="uid://capgfxjl8hyw1" path="res://levels/level_credit.gd" id="1_6ya2s"]
+[ext_resource type="Texture2D" uid="uid://cao4j2flmdt4x" path="res://textures/credits.png" id="1_klyt0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+diffuse_texture = ExtResource("1_klyt0")
+
+[node name="level1" type="Node2D" unique_id=891973835]
+script = ExtResource("1_6ya2s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1010912054]
+visible = false
+
+[node name="Control" type="Control" parent="." unique_id=1802068621]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=481431094]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_xrivr")

@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bi7fx5uih2l7n" path="res://textures/tiles/purple dark_tile.png" id="3_n7kmf"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="3_o2o8u"]
 [ext_resource type="Texture2D" uid="uid://d0fuy8ogn5bug" path="res://textures/tiles/noveny_banbusz.png" id="4_1hfnh"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="5_gibqe"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="5_gibqe"]
 [ext_resource type="Texture2D" uid="uid://dpvxklmc5li1q" path="res://textures/tiles/noveny_banbusz_02.png" id="5_skp6n"]
 [ext_resource type="Texture2D" uid="uid://cr76v56r5lnse" path="res://textures/tiles/noveny_hid_03.png" id="6_n7kmf"]
 [ext_resource type="Texture2D" uid="uid://cy7qi7cgofgne" path="res://textures/tiles/inda.png" id="7_c4hw6"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="8_1w4la"]
+[ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="13_c4hw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qtht"]
 size = Vector2(608, 4992)
@@ -512,3 +513,8 @@ scale = Vector2(1.9943874, 1.9943874)
 text = "Goodbye!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("13_c4hw6")]
+position = Vector2(-3, -4248)
+scale = Vector2(39.93, 4)
+lvl = 5
