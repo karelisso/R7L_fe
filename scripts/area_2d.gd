@@ -10,7 +10,7 @@ extends Area2D
 @export var gravity_ =5.0
 @export var jump_velocty = -200
 
-signal LoadLevel
+#signal LoadLevel
 func loadlevel():
 	get_tree().call_group("manager",
 	"ChangeScene",lvl,Vector2(pos_x,pos_y) )
