@@ -3,13 +3,14 @@ extends Control
 @onready var main_menu = preload("res://scenes/main_menu.tscn")
 @onready var settings_menu = preload("res://scenes/settings_menu.tscn")
 @onready var background: Panel = $CanvasLayer/background
+@onready var back_button: TextureButton = $CanvasLayer/BoxContainer/BackButton
 
 func _ready() -> void:
+	back_button.grab_focus()
 	background.modulate = Color(0, 0, 0, 0.5)
-	pass
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("back"):
 		get_parent().toggle_pause()
 		call_deferred("queue_free")
 

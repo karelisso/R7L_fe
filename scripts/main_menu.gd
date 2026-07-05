@@ -2,6 +2,10 @@ extends Control
 
 @onready var main_scene = preload("res://scenes/Main.tscn")
 @onready var settings_menu = preload("res://scenes/settings_menu.tscn")
+@onready var start_button: TextureButton = $BoxContainer/StartButton
+
+func _ready() -> void:
+	start_button.grab_focus()
 
 func _on_start_button_button_down() -> void:
 	main_scene = load("res://scenes/Main.tscn")

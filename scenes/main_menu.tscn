@@ -64,6 +64,7 @@ custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
 texture_normal = ExtResource("3_rtw2f")
 texture_hover = ExtResource("4_oa1go")
+texture_focused = ExtResource("4_oa1go")
 stretch_mode = 0
 
 [node name="SettingsButton" type="TextureButton" parent="BoxContainer" unique_id=683637700]
@@ -71,6 +72,7 @@ custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
 texture_normal = ExtResource("5_tbmy8")
 texture_hover = ExtResource("6_jk1qb")
+texture_focused = ExtResource("6_jk1qb")
 stretch_mode = 0
 
 [node name="ExitButton" type="TextureButton" parent="BoxContainer" unique_id=647872893]
@@ -78,6 +80,7 @@ custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
 texture_normal = ExtResource("7_tbmy8")
 texture_hover = ExtResource("8_jk1qb")
+texture_focused = ExtResource("8_jk1qb")
 stretch_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2066450230]
