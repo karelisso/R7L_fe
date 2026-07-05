@@ -17,12 +17,14 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("back"):
 		#var instance = scene.instantiate()
 		#add_sibling(instance)
+		get_parent().is_settings_open = false
 		get_parent()._ready()
 		call_deferred("queue_free")
 
 func _on_back_button_button_down() -> void:
 	#var instance = scene.instantiate()
 	#add_sibling(instance)
+	get_parent().is_settings_open = false
 	get_parent()._ready()
 	call_deferred("queue_free")
 
