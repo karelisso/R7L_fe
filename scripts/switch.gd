@@ -54,9 +54,9 @@ func _physics_process(delta: float) -> void:
 			anim.play("heavy")
 		if ( gravity < max_range or min_range > max_range ) and gravity > min_range:
 			anim.play("goood")
-			door.set_collision_layer_value(2,false)
-			door.set_collision_layer_value(1,false)
-			door.get_child(1).self_modulate.a = 0.5
+			#door.set_collision_layer_value(2,false)
+			#door.set_collision_layer_value(1,false)
+			#door.get_child(1).self_modulate.a = 0.5
 		if solved:
 			anim.play("permament")
 			door.get_child(1).self_modulate.a = 0.5

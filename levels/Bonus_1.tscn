@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://d3cnxt6uoh7xh"]
+[gd_scene format=4 uid="uid://bg20v2sjkmyb0"]
 
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="1_gyldo"]
 [ext_resource type="Texture2D" uid="uid://17mm6emrv2w0" path="res://textures/tiles/Blue_dark_tile.png" id="2_p12qt"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cr76v56r5lnse" path="res://textures/tiles/noveny_hid_03.png" id="8_108iw"]
 [ext_resource type="Texture2D" uid="uid://cy7qi7cgofgne" path="res://textures/tiles/inda.png" id="9_qmkmd"]
 [ext_resource type="Texture2D" uid="uid://blcd0v72x6123" path="res://textures/tiles/Hazards.png" id="10_3tbab"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="11_0gtoc"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="11_0gtoc"]
 [ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="12_hpofx"]
 [ext_resource type="PackedScene" uid="uid://b5lp0qbau1kqf" path="res://scenes/springShiny.tscn" id="13_m4f2g"]
 [ext_resource type="PackedScene" uid="uid://dcndhrnee5n0q" path="res://scenes/Door.tscn" id="13_pecdw"]
