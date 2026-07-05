@@ -1,5 +1,6 @@
 extends Node2D
 @export var gravity:float
+@export var effective:float
 @export var spawn:Vector2
 @onready var text:Label = $CanvasLayer/Label
 @export var stages:PackedStringArray
@@ -7,6 +8,7 @@ extends Node2D
 @onready var player = $CanvasLayer/SubViewportContainer/subviewport/Character
 @onready var player_anim_sprite = $CanvasLayer/SubViewportContainer/subviewport/Character/AnimatedSprite2D
 @onready var gui = $CanvasLayer
+@onready var bar = $CanvasLayer/TextureProgressBar
 var power:float
 var scene_loaded = false
 var is_paused = false
@@ -24,8 +26,8 @@ func _process(_delta: float) -> void:
 			var instanced_scene = pause_menu.instantiate()
 			add_child(instanced_scene)
 			toggle_pause()
-	text.text = str(gravity)
-
+	#text.text = str(effective)
+	bar.value = 100-100*effective/2
 func ChangeScene(tooo:int,_pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
@@ -51,6 +53,8 @@ func SetGravity(f:float):
 	scene_loaded = true
 
 	gravity = f
+func SetEff(f:float):
+	effective=f
 func toggle_pause():
 	if not is_paused:
 		is_paused = true

@@ -41,6 +41,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
+	get_tree().call_group("main","SetEff",total_gravity)
+
 	get_tree().call_group("playerseeker","SetPos",global_position)
 	#if respawn_delay_timer > -1:
 	respawn_delay_timer -= delta
@@ -104,6 +106,8 @@ func _physics_process(_delta):
 			velocity.y = jump_velocity- gravity
 			walljump = false
 		anim.play("spin")
+		if not Input.is_action_pressed("down"):
+			set_collision_mask_value(4,true)
 	else:
 		walljump = true
 		if Input.is_action_pressed("down"):

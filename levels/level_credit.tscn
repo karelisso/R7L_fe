@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bcy703wcbxuwk"]
 
-[ext_resource type="Script" uid="uid://capgfxjl8hyw1" path="res://levels/level_credit.gd" id="1_6ya2s"]
+[ext_resource type="Script" uid="uid://capgfxjl8hyw1" path="res://scripts/level_credit.gd" id="1_6ya2s"]
 [ext_resource type="Texture2D" uid="uid://cao4j2flmdt4x" path="res://textures/credits.png" id="1_klyt0"]
+
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
 diffuse_texture = ExtResource("1_klyt0")

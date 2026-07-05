@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dl15cu265t7fg" path="res://scripts/handel_main.gd" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://dk1mfxqbux6o6" path="res://scenes/character.tscn" id="2_uu6xs"]
+[ext_resource type="Texture2D" uid="uid://7c2u4n0aephj" path="res://textures/objects/progress_red.png" id="3_rarhs"]
+[ext_resource type="Texture2D" uid="uid://0lu6hqxscfpw" path="res://textures/objects/progress_green.png" id="4_vcsgt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rxg2q"]
 font_size = 48
 
-[node name="main" type="Node2D" unique_id=1276813274 groups=["manager", "weighted"]]
+[node name="main" type="Node2D" unique_id=1276813274 groups=["main", "manager", "weighted"]]
 script = ExtResource("1_uu6xs")
 spawn = Vector2(100, 56)
-stages = PackedStringArray("res://levels/level_credit.tscn", "res://levels/level_2.tscn", "res://levels/level_3.tscn", "res://levels/level_4.tscn", "res://levels/level_final.tscn", "res://levels/level_credit.tscn", "res://levels/prot_3.tscn", "res://levels/prot_pipe.tscn")
+stages = PackedStringArray("res://levels/level_1.tscn", "res://levels/level_2.tscn", "res://levels/level_3.tscn", "res://levels/level_4.tscn", "res://levels/level_final.tscn", "res://levels/level_credit.tscn", "res://levels/prot_3.tscn", "res://levels/prot_pipe.tscn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1170587652]
 
@@ -51,3 +53,10 @@ offset_right = 133.0
 offset_bottom = 62.0
 text = "healht= 999%"
 label_settings = SubResource("LabelSettings_rxg2q")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1792261557]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+texture_under = ExtResource("3_rarhs")
+texture_progress = ExtResource("4_vcsgt")
