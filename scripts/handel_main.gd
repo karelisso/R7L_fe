@@ -30,15 +30,16 @@ func ChangeScene(tooo:int,_pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
 		n.queue_free()
-	var some_scene = load(stages[tooo]) # returns a PackedScene
-	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
-	sceneparent.add_child(instanced_scene)
-	scene_loaded = false
+	call_deferred("Load",tooo)
 	#player.position = pos
 	#for child in get_children():
 		#if child is Label:
 			#child.reparent(self.get_child(0),true)
-
+func Load(tooo:int):
+	var some_scene = load(stages[tooo]) # returns a PackedScene
+	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
+	sceneparent.add_child(instanced_scene)
+	scene_loaded = false
 func SetGravity(f:float):
 	#if not scene_loaded:
 		#for child in find_children("*", "Label", true, false):

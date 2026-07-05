@@ -779,3 +779,6 @@ shape = SubResource("RectangleShape2D_xrivr")
 [node name="DeathArea" parent="." unique_id=1114980980 instance=ExtResource("13_8l1os")]
 position = Vector2(26, 104)
 scale = Vector2(16.58, 1)
+
+[node name="Spring4" parent="." unique_id=1008518226 instance=ExtResource("3_ilhis")]
+position = Vector2(151, 37)
