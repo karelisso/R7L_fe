@@ -54,15 +54,18 @@ func SetGravity(f:float):
 func toggle_pause():
 	if not is_paused:
 		is_paused = true
-		player.process_mode = Node.PROCESS_MODE_DISABLED
-		sceneparent.process_mode =Node.PROCESS_MODE_DISABLED
+		if player !=null:
+			player.process_mode = Node.PROCESS_MODE_DISABLED
+			sceneparent.process_mode =Node.PROCESS_MODE_DISABLED
 		#player_anim_sprite.speed_scale = 0
 		#player.set_process(false)
 		#player.set_physics_process(false)
 	else:
 		is_paused = false
-		player.process_mode = Node.PROCESS_MODE_INHERIT
-		sceneparent.process_mode =Node.PROCESS_MODE_INHERIT
+		
+		if player !=null:
+			player.process_mode = Node.PROCESS_MODE_INHERIT
+			sceneparent.process_mode =Node.PROCESS_MODE_INHERIT
 		#player_anim_sprite.speed_scale = 1
 		#player.set_process(true)
 		#player.set_physics_process(true)
