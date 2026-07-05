@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://dnqggsceqbdul"]
 
-[ext_resource type="Script" path="res://scripts/Level_code.gd" id="1_20opy"]
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="2_20opy"]
 [ext_resource type="Texture2D" uid="uid://gh14aq73t4we" path="res://textures/tiles/FullSetRed.png" id="3_lfnxh"]
 [ext_resource type="Texture2D" uid="uid://blcd0v72x6123" path="res://textures/tiles/Hazards.png" id="4_ofchu"]
 [ext_resource type="Texture2D" uid="uid://nyehhdlljlan" path="res://textures/tiles/Darkness.png" id="5_jq78i"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="6_8l0e1"]
 [ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="7_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="8_ofchu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l0e1"]
 size = Vector2(928, 1232)
@@ -151,7 +151,6 @@ texture = ExtResource("5_jq78i")
 sources/0 = SubResource("TileSetAtlasSource_0unm6")
 
 [node name="level3" type="Node2D" unique_id=1105074313]
-script = ExtResource("1_20opy")
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=839196879]
 position = Vector2(40, -168)
@@ -224,3 +223,8 @@ scale = Vector2(0.8256195, 0.8256195)
 text = "If you are stuck, press R to restart the level!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("8_ofchu")]
+position = Vector2(-24, -176)
+scale = Vector2(0.085, 1.6)
+lvl = 3
