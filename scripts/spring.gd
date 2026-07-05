@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var mesh = $MeshInstance2D
-@onready var audio = $AudioStreamPlayer
+#@onready var audio = $AudioStreamPlayer
 
 var offset: Vector2
 var timer = 0
