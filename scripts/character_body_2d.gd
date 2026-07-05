@@ -14,6 +14,10 @@ var walljump = true
 @onready var death_by_gravity = $DeathByGravity
 @onready var death_sfx = $Death
 @onready var spring_sfx = $AudioStreamPlayer2
+@onready var jump_sfx = $AudioStreamPlayerJump
+@onready var walk_sfx = $AudioStreamPlayerWalk
+@onready var thump_sfx = $AudioStreamPlayerThump
+@onready var door_open_sfx = $AudioStreamPlayerDoorOpen
 @onready var anim = $AnimatedSprite2D
 @export var snapback_length = 60 # in buffer_size mult
 #multiply it by interwal to get length i second
@@ -104,6 +108,7 @@ func _physics_process(_delta):
 		velocity.y += gravity
 		if can_walljump and walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
 			velocity.y = jump_velocity- gravity
+			jump_sfx.play()
 			walljump = false
 		anim.play("spin")
 	else:
@@ -130,10 +135,20 @@ func _physics_process(_delta):
 				anim.play("idl")
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		jump_sfx.play()
 
 	if direction:
+		if walk_sfx.playing:
+			if not is_on_floor():
+				walk_sfx.stop()
+			if abs(velocity.x) < 0.2:
+				walk_sfx.stop()
+		elif not walk_sfx.playing and is_on_floor() and abs(velocity.x) > 0.2:
+			walk_sfx.play()
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration)
 	else:
+		if walk_sfx.playing:
+			walk_sfx.stop()
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 	move_and_slide()
 	
@@ -162,6 +177,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				pos_buffer.resize(snapback_length+2)
 			#area.call_deferred("loadlevel")
 			#area.get_parent().call_deferred("queue_free")
+			door_open_sfx.play()
 			die(1,true)
 		elif area.id == "spring":
 			spring_sfx.play()
@@ -172,6 +188,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "hazard":
 			die(0.5,false)
+		else:
+			thump_sfx.play()
 	
 func _draw() -> void:
 	if pos_buffer.size() > 0:
@@ -190,6 +208,10 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 	$Camera2D.limit_right = boundend.x
 	$Camera2D.limit_bottom = boundend.y
 func die(timeRRR:float,wins:bool):
+		if jump_sfx.playing:
+			jump_sfx.stop()
+		if walk_sfx.playing:
+			walk_sfx.stop()
 		gravity = start_gravity
 		jump_velocity = star_jump
 		speed = base_speed

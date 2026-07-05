@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://drbqwtqlkj1yp" path="res://textures/allenBuddy_extended.png" id="3_my7n2"]
 [ext_resource type="AudioStream" uid="uid://ckyixv114q52i" path="res://sounds/sfx/Item_Pickup.wav" id="4_my7n2"]
 [ext_resource type="AudioStream" uid="uid://b3b3du2nerqpi" path="res://sounds/sfx/Death.wav" id="7_2cgup"]
+[ext_resource type="AudioStream" uid="uid://ccycbuh36bipg" path="res://sounds/sfx/jump.wav" id="7_a5ia6"]
+[ext_resource type="AudioStream" uid="uid://c41b0r2b6hlbn" path="res://sounds/sfx/walk_quick_looped.wav" id="8_0dpix"]
 [ext_resource type="AudioStream" uid="uid://cposs6dq4rlqa" path="res://sounds/sfx/Death_by_Gravity.wav" id="8_a5ia6"]
+[ext_resource type="AudioStream" uid="uid://bsucsle6s4wyn" path="res://sounds/sfx/door_open.wav" id="10_2hyy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt8p"]
 size = Vector2(20, 21)
@@ -290,6 +293,18 @@ stream = ExtResource("7_2cgup")
 [node name="DeathByGravity" type="AudioStreamPlayer" parent="." unique_id=202098862]
 stream = ExtResource("8_a5ia6")
 volume_db = -10.0
+
+[node name="AudioStreamPlayerJump" type="AudioStreamPlayer" parent="." unique_id=564447318]
+stream = ExtResource("7_a5ia6")
+volume_db = 6.0
+
+[node name="AudioStreamPlayerWalk" type="AudioStreamPlayer" parent="." unique_id=1586334276]
+stream = ExtResource("8_0dpix")
+volume_db = -4.0
+
+[node name="AudioStreamPlayerDoorOpen" type="AudioStreamPlayer" parent="." unique_id=945316814]
+stream = ExtResource("10_2hyy3")
+volume_db = 5.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
