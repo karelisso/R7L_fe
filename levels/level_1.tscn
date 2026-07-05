@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://ci06h2x38m6gg"]
+[gd_scene format=4 uid="uid://cyojln5rkgyeo"]
 
 [ext_resource type="Texture2D" uid="uid://ghv1ugn2qv5m" path="res://textures/tiles/FullSetBlue.png" id="1_jirdo"]
 [ext_resource type="Texture2D" uid="uid://u1adird0gdup" path="res://textures/tiles/hatter_merged.png" id="2_btoec"]
@@ -6,10 +6,10 @@
 [ext_resource type="Shader" uid="uid://b362defooispw" path="res://shader/cutcircle.gdshader" id="2_nmsli"]
 [ext_resource type="PackedScene" uid="uid://c6toiscbxbouq" path="res://scenes/spring.tscn" id="3_bt44k"]
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="3_gwceb"]
-[ext_resource type="Script" uid="uid://b305nxb6lfftm" path="res://levels/get_player_pos.gd" id="4_betor"]
+[ext_resource type="Script" uid="uid://b305nxb6lfftm" path="res://scripts/get_player_pos.gd" id="4_betor"]
 [ext_resource type="Texture2D" uid="uid://blcd0v72x6123" path="res://textures/tiles/Hazards.png" id="5_btoec"]
 [ext_resource type="Texture2D" uid="uid://d0fuy8ogn5bug" path="res://textures/tiles/noveny_banbusz.png" id="8_aerfg"]
-[ext_resource type="PackedScene" uid="uid://b4cvapkiw6lgx" path="res://scenes/death_area.tscn" id="8_l53as"]
+[ext_resource type="PackedScene" uid="uid://co33v678sh46a" path="res://scenes/death_area.tscn" id="8_l53as"]
 [ext_resource type="PackedScene" uid="uid://b3gpjh6md3bv1" path="res://scenes/warp.tscn" id="9_3sk1a"]
 [ext_resource type="Texture2D" uid="uid://dpvxklmc5li1q" path="res://textures/tiles/noveny_banbusz_02.png" id="9_nmsli"]
 [ext_resource type="Texture2D" uid="uid://cr76v56r5lnse" path="res://textures/tiles/noveny_hid_03.png" id="10_betor"]
@@ -356,7 +356,7 @@ sources/5 = SubResource("TileSetAtlasSource_l53as")
 [node name="level1" type="Node2D" unique_id=891973835]
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1061429715]
-position = Vector2(40, 184)
+position = Vector2(43, 174)
 script = ExtResource("3_gwceb")
 
 [node name="Area2D" type="Area2D" parent="PlayerSpawn" unique_id=105576783]

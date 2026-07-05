@@ -27,12 +27,11 @@ var respawn_delay_timer = -1
 
 @onready var carried:CharacterBody2D
 @onready var touched:CharacterBody2D
-
 func _ready() -> void:
 
 	start_gravity=gravity
 	star_jump=jump_velocity
-	
+	set_physics_process(true)
 	
 	if snapback_automatic:
 		pos_buffer.resize(snapback_length)
@@ -43,12 +42,13 @@ func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
 	get_tree().call_group("playerseeker","SetPos",global_position)
-	if respawn_delay_timer != -1:
-		respawn_delay_timer -= delta
-	elif respawn_delay_timer < 0:
+	#if respawn_delay_timer > -1:
+	respawn_delay_timer -= delta
+	if respawn_delay_timer < 0 and death:
 		respawn_delay_timer = -1
 		set_physics_process(true)
 		anim.modulate = Color(1, 1, 1, 1)
+		death = false
 		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0))
 
 func _physics_process(_delta):
@@ -194,8 +194,9 @@ func die():
 		total_gravity=0
 		scale.y = 1
 		velocity = Vector2.ZERO
-		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
-		respawn_delay_timer = 0.5
+		#get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
+		respawn_delay_timer = 0.2
+		death = true
 		set_physics_process(false)
 		anim.modulate = Color(0, 0, 0, 0)
 
