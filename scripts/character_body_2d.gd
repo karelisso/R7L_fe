@@ -47,16 +47,16 @@ func _physics_process(_delta):
 		carried.global_position = global_position +Vector2(0,-20) 
 		carried.velocity = Vector2.ZERO
 		if not Input.is_action_pressed("pick"):
-			#carried.set_collision_layer_value(2,true)
 			carried.global_position = global_position
 			if direction == 0:
-				carried.velocity += Vector2(0,-150)
+				carried.velocity += Vector2(0,-150 -100*total_gravity)
 			else:
 				carried.velocity += Vector2(300*direction,-50)
 			carried = null
 	else:
 		if Input.is_action_pressed("pick") and touched !=null:
 			carried = touched
+			carried.get_child(2).set_collision_layer_value(1,false)
 	total_gravity = ((gravity - 5) / abs(jump_velocity / 2)) * 10 #jump_velocity is half effective, multiplied by 10 to apply to scale easily
 	if total_gravity >= 2:
 		die()
