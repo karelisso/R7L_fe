@@ -59,9 +59,18 @@ text = "Growing Gravity"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="FocusGoblin" type="TextureButton" parent="BoxContainer" unique_id=1024327566]
+layout_mode = 2
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+
 [node name="StartButton" type="TextureButton" parent="BoxContainer" unique_id=564823688]
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
 texture_normal = ExtResource("3_rtw2f")
 texture_hover = ExtResource("4_oa1go")
 texture_focused = ExtResource("4_oa1go")
@@ -70,6 +79,8 @@ stretch_mode = 0
 [node name="SettingsButton" type="TextureButton" parent="BoxContainer" unique_id=683637700]
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
 texture_normal = ExtResource("5_tbmy8")
 texture_hover = ExtResource("6_jk1qb")
 texture_focused = ExtResource("6_jk1qb")
@@ -78,6 +89,8 @@ stretch_mode = 0
 [node name="ExitButton" type="TextureButton" parent="BoxContainer" unique_id=647872893]
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
 texture_normal = ExtResource("7_tbmy8")
 texture_hover = ExtResource("8_jk1qb")
 texture_focused = ExtResource("8_jk1qb")
@@ -89,5 +102,11 @@ volume_db = -10.0
 autoplay = true
 
 [connection signal="button_down" from="BoxContainer/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="mouse_entered" from="BoxContainer/StartButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/StartButton" to="." method="_on_button_mouse_exited"]
 [connection signal="button_down" from="BoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
+[connection signal="mouse_entered" from="BoxContainer/SettingsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/SettingsButton" to="." method="_on_button_mouse_exited"]
 [connection signal="button_down" from="BoxContainer/ExitButton" to="." method="_on_exit_button_button_down"]
+[connection signal="mouse_entered" from="BoxContainer/ExitButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/ExitButton" to="." method="_on_button_mouse_exited"]
