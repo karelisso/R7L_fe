@@ -56,6 +56,7 @@ text = "healht= 999%"
 label_settings = SubResource("LabelSettings_rxg2q")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1792261557]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 value = 100.0

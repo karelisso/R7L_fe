@@ -78,6 +78,7 @@ texture_focused = ExtResource("6_jk1qb")
 stretch_mode = 0
 
 [node name="Bonus" type="TextureButton" parent="BoxContainer" unique_id=806040221]
+visible = false
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitButton")
@@ -107,6 +108,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="Label" type="Label" parent="." unique_id=364568819]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.010802469

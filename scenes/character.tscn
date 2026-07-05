@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://1khrr5r0nn1g" path="res://textures/alien_Buddy.png" id="3_ij4jk"]
 [ext_resource type="Texture2D" uid="uid://drbqwtqlkj1yp" path="res://textures/allenBuddy_extended.png" id="3_my7n2"]
 [ext_resource type="AudioStream" uid="uid://ckyixv114q52i" path="res://sounds/sfx/Item_Pickup.wav" id="4_my7n2"]
-[ext_resource type="AudioStream" uid="uid://wx76qh2ioy6x" path="res://sounds/music/NewSpirit.wav" id="6_a5ia6"]
 [ext_resource type="AudioStream" uid="uid://8d4eruh4ha7l" path="res://sounds/music/Floating_Worlds_v2.wav" id="6_50cep"]
+[ext_resource type="AudioStream" uid="uid://wx76qh2ioy6x" path="res://sounds/music/NewSpirit.wav" id="6_a5ia6"]
 [ext_resource type="AudioStream" uid="uid://b3b3du2nerqpi" path="res://sounds/sfx/Death.wav" id="7_2cgup"]
 [ext_resource type="AudioStream" uid="uid://ccycbuh36bipg" path="res://sounds/sfx/jump.wav" id="7_a5ia6"]
 [ext_resource type="AudioStream" uid="uid://c41b0r2b6hlbn" path="res://sounds/sfx/walk_quick_looped.wav" id="8_0dpix"]
@@ -271,22 +271,23 @@ animation = &"HeavyIsDead"
 frame = 4
 frame_progress = 1.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1522120924]
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1522120924]
 stream = ExtResource("6_50cep")
 volume_db = -5.0
+autoplay = true
 
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=1565044532]
 stream = ExtResource("7_2cgup")
+volume_db = -10.0
 
 [node name="DeathByGravity" type="AudioStreamPlayer" parent="." unique_id=202098862]
 stream = ExtResource("8_a5ia6")
 volume_db = -10.0
-autoplay = true
 
 [node name="spring" type="AudioStreamPlayer" parent="." unique_id=650059771]
 stream = ExtResource("4_my7n2")
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=484148678]
+[node name="Ekimusic" type="AudioStreamPlayer" parent="." unique_id=484148678]
 stream = ExtResource("6_a5ia6")
 
 [node name="AudioStreamPlayerJump" type="AudioStreamPlayer" parent="." unique_id=564447318]
