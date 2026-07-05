@@ -3,9 +3,16 @@ extends Control
 @onready var main_scene = preload("res://scenes/Main.tscn")
 @onready var settings_menu = preload("res://scenes/settings_menu.tscn")
 @onready var start_button: TextureButton = $BoxContainer/StartButton
+@onready var focus_goblin: TextureButton = $BoxContainer/FocusGoblin
+var is_mouse_focus = false
+var is_settings_open = false
 
 func _ready() -> void:
 	start_button.grab_focus()
+
+func _process(_delta: float) -> void:
+	if is_mouse_focus:
+		focus_goblin.grab_focus()
 
 func _on_start_button_button_down() -> void:
 	main_scene = load("res://scenes/Main.tscn")
@@ -14,6 +21,7 @@ func _on_start_button_button_down() -> void:
 	call_deferred("queue_free")
 
 func _on_settings_button_button_down() -> void:
+	is_mouse_focus = false
 	settings_menu = load("res://scenes/settings_menu.tscn")
 	var instance = settings_menu.instantiate()
 	add_child(instance)
@@ -22,3 +30,9 @@ func _on_settings_button_button_down() -> void:
 
 func _on_exit_button_button_down() -> void:
 	get_tree().quit()
+
+func _on_button_mouse_entered() -> void:
+	is_mouse_focus = true
+
+func _on_button_mouse_exited() -> void:
+	is_mouse_focus = false
