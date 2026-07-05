@@ -48,22 +48,31 @@ horizontal_alignment = 1
 [node name="BackButton" type="TextureButton" parent="CanvasLayer/BoxContainer" unique_id=159593676]
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
 texture_normal = ExtResource("2_1s2dm")
 texture_hover = ExtResource("3_88e76")
+texture_focused = ExtResource("3_88e76")
 stretch_mode = 0
 
 [node name="SettingsButton" type="TextureButton" parent="CanvasLayer/BoxContainer" unique_id=307674063]
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
 texture_normal = ExtResource("2_kukqi")
 texture_hover = ExtResource("3_5d2l8")
+texture_focused = ExtResource("3_5d2l8")
 stretch_mode = 0
 
 [node name="MainMenuButton" type="TextureButton" parent="CanvasLayer/BoxContainer" unique_id=1763163713]
 custom_minimum_size = Vector2(135, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../BackButton")
 texture_normal = ExtResource("6_knqa7")
 texture_hover = ExtResource("7_71k7c")
+texture_focused = ExtResource("7_71k7c")
 stretch_mode = 0
 
 [connection signal="button_down" from="CanvasLayer/BoxContainer/BackButton" to="." method="_on_back_to_game_button_button_down"]
