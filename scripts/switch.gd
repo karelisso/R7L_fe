@@ -51,12 +51,12 @@ func _physics_process(delta: float) -> void:
 			anim.play("heavy")
 		if ( gravity < max_range or min_range > max_range ) and gravity > min_range:
 			anim.play("goood")
-			#door.set_collision_layer_value(2,false)
-			#door.set_collision_layer_value(1,false)
+			door.set_collision_layer_value(2,false)
+			door.set_collision_layer_value(1,false)
 		if solved:
 			anim.play("permament")
-			#door.set_collision_layer_value(2,false)
-			#door.set_collision_layer_value(1,false)
+			door.set_collision_layer_value(2,false)
+			door.set_collision_layer_value(1,false)
 		
 func _on_body_entered(body: Node2D) -> void:
 	# Check if the thing that stepped on the switch is in our box group

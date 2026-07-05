@@ -11,7 +11,7 @@ size = Vector2(16, 8)
 
 [node name="box" type="CharacterBody2D" unique_id=1342631449 groups=["box", "weighted"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 14
 input_pickable = true
 script = ExtResource("1_cyr5r")
 
