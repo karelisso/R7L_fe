@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		dummy_weight = 0
 		pushed = false
+	door.get_child(1).self_modulate.a = 1
 	door.set_collision_layer_value(2,true)
 	door.set_collision_layer_value(1,true)
 	
@@ -38,9 +39,11 @@ func _physics_process(delta: float) -> void:
 				solved = true
 			else:
 				anim.play("goodpush")
+			door.get_child(1).self_modulate.a = 0.5
 			door.set_collision_layer_value(2,false)
 			door.set_collision_layer_value(1,false)
 		if solved:
+			door.get_child(1).self_modulate.a = 0.5
 			anim.play("permamentpush")
 			door.set_collision_layer_value(2,false)
 			door.set_collision_layer_value(1,false)
@@ -53,8 +56,10 @@ func _physics_process(delta: float) -> void:
 			anim.play("goood")
 			door.set_collision_layer_value(2,false)
 			door.set_collision_layer_value(1,false)
+			door.get_child(1).self_modulate.a = 0.5
 		if solved:
 			anim.play("permament")
+			door.get_child(1).self_modulate.a = 0.5
 			door.set_collision_layer_value(2,false)
 			door.set_collision_layer_value(1,false)
 		

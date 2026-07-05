@@ -13,8 +13,10 @@ var can_walljump = true
 var walljump = true
 @onready var death_by_gravity = $DeathByGravity
 @onready var death_sfx = $Death
-@onready var spring_sfx = $AudioStreamPlayer2
+@onready var spring_sfx = $spring
 @onready var anim = $AnimatedSprite2D
+@onready var bg_music_1 =$AudioStreamPlayer
+@onready var bg_music_2 =$AudioStreamPlayer2
 @export var snapback_length = 60 # in buffer_size mult
 #multiply it by interwal to get length i second
 @export var snapback_automatic = true
@@ -51,7 +53,16 @@ func _process(delta: float) -> void:
 		set_physics_process(true)
 		anim.modulate = Color(1, 1, 1, 1)
 		death = false
+		bg_music_1.stop()
+		bg_music_2.stop()
+		if current_lvl%2 ==0:
+			bg_music_1.play()
+			bg_music_2.stop()
+		else:
+			bg_music_1.stop()
+			bg_music_2.play()
 		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0))
+
 
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
