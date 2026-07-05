@@ -9,12 +9,15 @@ var acceleration = 50
 var jump_velocity = -200.0
 var start_gravity
 var star_jump
-var can_walljump = true
+var can_walljump = false
 var walljump = true
 @onready var death_by_gravity = $DeathByGravity
 @onready var death_sfx = $Death
 @onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D
+@onready var uncrouch_hit_box: CollisionShape2D = $Area2D2/UncrouchHitBox
+@onready var area_2d_2: Area2D = $Area2D2
+
 @export var snapback_length = 60 # in buffer_size mult
 #multiply it by interwal to get length i second
 @export var snapback_automatic = true
@@ -30,7 +33,11 @@ var respawn_delay_timer = -1
 @onready var carried:CharacterBody2D
 @onready var touched:CharacterBody2D
 func _ready() -> void:
-
+	
+	#var tilemap = get_parent().get_child(1).get_child(0).get_child(3)
+	#var collision_pos = uncrouch_hit_box.position
+	#var tilemap_hit_coords = tilemap.
+	
 	start_gravity=gravity
 	star_jump=jump_velocity
 	set_physics_process(true)
@@ -101,13 +108,15 @@ func _physics_process(_delta):
 			pos_buffer.append(position)
 			snapback_counter = 0	
 	if not is_on_floor():
+		$CollisionShape2D.scale = Vector2(0.8,1)
+		$CollisionShape2D.position =Vector2(0,0.5)
 		velocity.y += gravity
 		if can_walljump and walljump and velocity.x ==0 and Input.is_action_just_pressed("jump") and abs(direction) > 0.2:
 			velocity.y = jump_velocity- gravity
 			walljump = false
 		anim.play("spin")
 	else:
-		walljump = true
+		#walljump = true
 		if Input.is_action_pressed("down"):
 			set_collision_mask_value(4,false)
 			$CollisionShape2D.scale = Vector2(0.7,0.7)
@@ -120,15 +129,25 @@ func _physics_process(_delta):
 				anim.play("crouch")
 		else:
 			set_collision_mask_value(4,true)
-			$CollisionShape2D.scale = Vector2(0.8,1)
-			$CollisionShape2D.position =Vector2(0,0.5)
-			if velocity.x >0.2:
-				anim.play("walkrigh")
-			elif velocity.x < -0.2:
-				anim.play("walkleft")
+			if len(area_2d_2.get_overlapping_areas()) < 2:
+				$CollisionShape2D.scale = Vector2(0.8,1)
+				$CollisionShape2D.position =Vector2(0,0.5)
+				if velocity.x >0.2:
+					anim.play("walkrigh")
+				elif velocity.x < -0.2:
+					anim.play("walkleft")
+				else:
+					anim.play("idl")
 			else:
-				anim.play("idl")
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+				$CollisionShape2D.scale = Vector2(0.7,0.7)
+				$CollisionShape2D.position =Vector2(0,4)
+				if velocity.x >0.2:
+					anim.play("crawlright")
+				elif velocity.x < -0.2:
+					anim.play("crawlleft")
+				else:
+					anim.play("crouch")
+	if Input.is_action_just_pressed("jump") and is_on_floor() and len(area_2d_2.get_overlapping_areas()) < 2:
 		velocity.y = jump_velocity
 
 	if direction:
@@ -138,7 +157,7 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	for i in get_slide_collision_count():
-		var im = get_slide_collision(i).get_collider()
+		var _im = get_slide_collision(i).get_collider()
 		#if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
 			#carried = im
 			#carried.set_collision_layer_value(2,false)
@@ -228,3 +247,15 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if body.id == "box":
 			#if Input.is_action_pressed("pick") and carried == null:
 			touched = null
+
+
+func _on_area_2d_2_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	$CollisionShape2D.scale = Vector2(0.7,0.7) # Checks for ceilings before uncrouching
+	$CollisionShape2D.position =Vector2(0,4)
+	if velocity.x >0.2:
+		anim.play("crawlright")
+	elif velocity.x < -0.2:
+		anim.play("crawlleft")
+	else:
+		anim.play("crouch")
+	uncrouch_hit_box.disabled = true
