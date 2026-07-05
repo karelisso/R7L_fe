@@ -22,8 +22,12 @@ var id = "player"
 var pos_buffer:PackedVector2Array
 var death = false
 var current_lvl:int
+
+var respawn_delay_timer = -1
+
 @onready var carried:CharacterBody2D
 @onready var touched:CharacterBody2D
+
 func _ready() -> void:
 
 	start_gravity=gravity
@@ -35,10 +39,17 @@ func _ready() -> void:
 	else:
 		pos_buffer.resize(snapback_length+2)
 	pos_buffer.fill(to_global(position) )
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
 	get_tree().call_group("playerseeker","SetPos",global_position)
+	if respawn_delay_timer != -1:
+		respawn_delay_timer -= delta
+	elif respawn_delay_timer < 0:
+		respawn_delay_timer = -1
+		set_physics_process(true)
+		anim.modulate = Color(1, 1, 1, 1)
+		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0))
 
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
@@ -182,8 +193,9 @@ func die():
 		speed = base_speed
 		total_gravity=0
 		scale.y = 1
-		
-		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
+		respawn_delay_timer = 0.5
+		set_physics_process(false)
+		anim.modulate = Color(0, 0, 0, 0)
 
 	#var main_menu = load("res://scenes/main_menu.tscn")
 	#var instance = main_menu.instantiate()
