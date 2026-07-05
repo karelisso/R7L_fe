@@ -91,6 +91,7 @@ reset={
 
 2d_physics/layer_1="Player char"
 2d_physics/layer_2="Walls and floors"
+2d_physics/layer_3="Objects"
 2d_physics/layer_4="OneWay"
 
 [physics]
