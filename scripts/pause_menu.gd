@@ -6,8 +6,9 @@ extends Control
 
 func _ready() -> void:
 	background.modulate = Color(0, 0, 0, 0.5)
+	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		get_parent().toggle_pause()
 		call_deferred("queue_free")
@@ -21,9 +22,9 @@ func _on_main_menu_button_button_down() -> void:
 func _on_settings_button_button_down() -> void:
 	settings_menu = load("res://scenes/settings_menu.tscn")
 	var instance = settings_menu.instantiate()
-	instance.scene = load("res://scenes/pause_menu.tscn")
-	add_sibling(instance)
-	call_deferred("queue_free")
+	add_child(instance)
+	#instance.scene = load("res://scenes/pause_menu.tscn")
+	#call_deferred("queue_free")
 
 func _on_back_to_game_button_button_down() -> void:
 	get_parent().toggle_pause()
