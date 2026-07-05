@@ -271,22 +271,23 @@ animation = &"HeavyIsDead"
 frame = 4
 frame_progress = 1.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1522120924]
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1522120924]
 stream = ExtResource("6_50cep")
 volume_db = -5.0
+autoplay = true
 
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=1565044532]
 stream = ExtResource("7_2cgup")
+volume_db = -10.0
 
 [node name="DeathByGravity" type="AudioStreamPlayer" parent="." unique_id=202098862]
 stream = ExtResource("8_a5ia6")
 volume_db = -10.0
-autoplay = true
 
 [node name="spring" type="AudioStreamPlayer" parent="." unique_id=650059771]
 stream = ExtResource("4_my7n2")
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=484148678]
+[node name="Ekimusic" type="AudioStreamPlayer" parent="." unique_id=484148678]
 stream = ExtResource("6_a5ia6")
 
 [node name="AudioStreamPlayerJump" type="AudioStreamPlayer" parent="." unique_id=564447318]
