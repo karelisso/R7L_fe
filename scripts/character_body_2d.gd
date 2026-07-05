@@ -182,7 +182,7 @@ func die():
 		speed = base_speed
 		total_gravity=0
 		scale.y = 1
-		
+		velocity = Vector2.ZERO
 		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
 
 	#var main_menu = load("res://scenes/main_menu.tscn")
