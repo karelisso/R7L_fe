@@ -11,6 +11,8 @@ var start_gravity
 var star_jump
 var can_walljump = true
 var walljump = true
+@onready var death_by_gravity = $DeathByGravity
+@onready var death_sfx = $Death
 @onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D
 @export var snapback_length = 60 # in buffer_size mult
@@ -41,8 +43,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
-	get_tree().call_group("main","SetEff",total_gravity)
-
 	get_tree().call_group("playerseeker","SetPos",global_position)
 	#if respawn_delay_timer > -1:
 	respawn_delay_timer -= delta
@@ -106,8 +106,6 @@ func _physics_process(_delta):
 			velocity.y = jump_velocity- gravity
 			walljump = false
 		anim.play("spin")
-		if not Input.is_action_pressed("down"):
-			set_collision_mask_value(4,true)
 	else:
 		walljump = true
 		if Input.is_action_pressed("down"):
@@ -195,7 +193,7 @@ func die(timeRRR:float,wins:bool):
 		gravity = start_gravity
 		jump_velocity = star_jump
 		speed = base_speed
-		total_gravity=0
+		total_gravity = 0
 		scale.y = 1
 		velocity = Vector2.ZERO
 		#get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
@@ -204,6 +202,10 @@ func die(timeRRR:float,wins:bool):
 		if wins:
 			anim.modulate = Color(0, 0, 0, 0)
 		else:
+			if total_gravity >= 2:
+				death_by_gravity.play()
+			else:
+				death_sfx.play()
 			anim.play("HeavyIsDead")
 		set_physics_process(false)
 		#

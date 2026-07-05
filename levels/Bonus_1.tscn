@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cyojln5rkgyeo"]
+[gd_scene format=4 uid="uid://d3cnxt6uoh7xh"]
 
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="1_gyldo"]
 [ext_resource type="Texture2D" uid="uid://u1adird0gdup" path="res://textures/tiles/hatter_merged.png" id="3_pecdw"]
