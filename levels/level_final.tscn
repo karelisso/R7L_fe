@@ -348,7 +348,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSpawn/Area2D" unique_id=1166912940]
-position = Vector2(56, -2344)
+position = Vector2(0, -2376)
 shape = SubResource("RectangleShape2D_0qtht")
 
 [node name="background" type="TileMapLayer" parent="." unique_id=1643005838]
@@ -473,5 +473,42 @@ offset_top = -984.0
 offset_right = 192.0
 offset_bottom = -960.0
 text = "It seems you're going now..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=48557967]
+offset_left = -192.0
+offset_top = -1272.0
+offset_right = 192.0
+offset_bottom = -1248.0
+text = "It was awesome guiding you!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=880221567]
+offset_left = -192.0
+offset_top = -1608.0
+offset_right = 192.0
+offset_bottom = -1584.0
+text = "I will cherish these memories forever."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1628947170]
+offset_left = -192.0
+offset_top = -2048.0
+offset_right = 192.0
+offset_bottom = -2024.0
+text = "It was an honor. But now..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="." unique_id=652752315]
+offset_left = -191.99998
+offset_top = -2672.0
+offset_right = 0.540329
+offset_bottom = -2648.0
+scale = Vector2(1.9943874, 1.9943874)
+text = "Goodbye!"
 horizontal_alignment = 1
 vertical_alignment = 1
