@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cyojln5rkgyeo"]
+[gd_scene format=4 uid="uid://d3cnxt6uoh7xh"]
 
 [ext_resource type="Script" uid="uid://bbncv5of74cje" path="res://scripts/player_spawn.gd" id="1_agph2"]
 [ext_resource type="Shader" uid="uid://b362defooispw" path="res://shader/cutcircle.gdshader" id="2_4vnwn"]
