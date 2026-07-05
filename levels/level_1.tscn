@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dpvxklmc5li1q" path="res://textures/tiles/noveny_banbusz_02.png" id="9_nmsli"]
 [ext_resource type="Texture2D" uid="uid://cr76v56r5lnse" path="res://textures/tiles/noveny_hid_03.png" id="10_betor"]
 [ext_resource type="Texture2D" uid="uid://cy7qi7cgofgne" path="res://textures/tiles/inda.png" id="11_vjtdm"]
+[ext_resource type="Texture2D" uid="uid://gt3q1svq7o6n" path="res://textures/tiles/door.png" id="15_vjtdm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(688, 416)
@@ -353,6 +354,61 @@ texture = ExtResource("2_btoec")
 sources/0 = SubResource("TileSetAtlasSource_kx6l7")
 sources/5 = SubResource("TileSetAtlasSource_l53as")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgw3c"]
+atlas = ExtResource("15_vjtdm")
+region = Rect2(0, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrvbd"]
+atlas = ExtResource("15_vjtdm")
+region = Rect2(16, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqlok"]
+atlas = ExtResource("15_vjtdm")
+region = Rect2(32, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nvrk"]
+atlas = ExtResource("15_vjtdm")
+region = Rect2(48, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkxa6"]
+atlas = ExtResource("15_vjtdm")
+region = Rect2(64, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w75he"]
+atlas = ExtResource("15_vjtdm")
+region = Rect2(0, 0, 16, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgw3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrvbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqlok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nvrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkxa6")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w75he")
+}],
+"loop": 1,
+"name": &"wait",
+"speed": 5.0
+}]
+
 [node name="level1" type="Node2D" unique_id=891973835]
 
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1061429715]
@@ -401,10 +457,19 @@ scale = Vector2(2.4, 1)
 position = Vector2(360, 264)
 scale = Vector2(5.54, 1)
 
-[node name="Area2D" parent="." unique_id=1302724983 instance=ExtResource("9_3sk1a")]
-position = Vector2(200, 192)
+[node name="Area2D" parent="." unique_id=1302724983 node_paths=PackedStringArray("door") instance=ExtResource("9_3sk1a")]
+position = Vector2(199.00002, 195)
 scale = Vector2(0.085, 1.6)
 lvl = 1
+door = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=949933226]
+position = Vector2(11.764496, -0.625)
+scale = Vector2(11.764705, 0.62499994)
+sprite_frames = SubResource("SpriteFrames_xrivr")
+animation = &"open"
+frame = 4
+frame_progress = 1.0
 
 [node name="Label" type="Label" parent="." unique_id=1192133748]
 offset_top = 199.99997
@@ -476,3 +541,5 @@ scale = Vector2(0.6155167, 0.6155167)
 text = "you jump that gap!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
