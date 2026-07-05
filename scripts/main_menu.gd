@@ -17,4 +17,4 @@ func _on_settings_button_button_down() -> void:
 	#call_deferred("queue_free")
 
 func _on_exit_button_button_down() -> void:
-	pass
+	get_tree().quit()
