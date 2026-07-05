@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://rdco1k56jgh6" path="res://textures/buttons/back_inactive.png" id="2_wswnh"]
 [ext_resource type="Texture2D" uid="uid://dsd0kv6gjhaaj" path="res://textures/buttons/back_active.png" id="3_labj1"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wswnh"]
+load_path = "res://.godot/imported/settings.png-59113fa79aa8b3670ee1eb1dcdfa2b90.ctex"
+
 [node name="SettingsMenu" type="Control" unique_id=1175756560]
 layout_mode = 3
 anchors_preset = 15
@@ -15,6 +18,15 @@ script = ExtResource("1_05p07")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=885255334]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=293823835]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_wswnh")
+expand_mode = 1
+
 [node name="background" type="Panel" parent="CanvasLayer" unique_id=9744110]
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,10 +37,25 @@ grow_vertical = 2
 [node name="FocusGoblin" type="TextureButton" parent="CanvasLayer" unique_id=1311580266]
 offset_right = 40.0
 offset_bottom = 40.0
-focus_neighbor_left = NodePath("../BoxContainer/BackButton")
-focus_neighbor_top = NodePath("../BoxContainer/BackButton")
-focus_neighbor_right = NodePath("../BoxContainer/BackButton")
-focus_neighbor_bottom = NodePath("../BoxContainer/BackButton")
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_right = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=110130661]
+custom_minimum_size = Vector2(135, 45)
+offset_right = 135.0
+offset_bottom = 45.0
+focus_neighbor_left = NodePath("../BoxContainer/VolumeSlider")
+focus_neighbor_top = NodePath("../BoxContainer/VolumeSlider")
+focus_neighbor_right = NodePath("../BoxContainer/VolumeSlider")
+focus_neighbor_bottom = NodePath("../BoxContainer/VolumeSlider")
+focus_next = NodePath("../BoxContainer/VolumeSlider")
+focus_previous = NodePath("../BoxContainer/VolumeSlider")
+texture_normal = ExtResource("2_wswnh")
+texture_hover = ExtResource("3_labj1")
+texture_focused = ExtResource("3_labj1")
+stretch_mode = 0
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=2146124319]
 anchors_preset = 8
@@ -46,22 +73,9 @@ vertical = true
 
 [node name="Label" type="Label" parent="CanvasLayer/BoxContainer" unique_id=147601702]
 layout_mode = 2
-text = "Settings"
+text = "Settings
+"
 horizontal_alignment = 1
-
-[node name="BackButton" type="TextureButton" parent="CanvasLayer/BoxContainer" unique_id=110130661]
-custom_minimum_size = Vector2(135, 45)
-layout_mode = 2
-focus_neighbor_left = NodePath("../VolumeSlider")
-focus_neighbor_top = NodePath("../VolumeSlider")
-focus_neighbor_right = NodePath("../VolumeSlider")
-focus_neighbor_bottom = NodePath("../VolumeSlider")
-focus_next = NodePath("../VolumeSlider")
-focus_previous = NodePath("../VolumeSlider")
-texture_normal = ExtResource("2_wswnh")
-texture_hover = ExtResource("3_labj1")
-texture_focused = ExtResource("3_labj1")
-stretch_mode = 0
 
 [node name="Label2" type="Label" parent="CanvasLayer/BoxContainer" unique_id=1603095876]
 layout_mode = 2
@@ -69,17 +83,17 @@ text = "Volume:"
 
 [node name="VolumeSlider" type="HSlider" parent="CanvasLayer/BoxContainer" unique_id=1682242118]
 layout_mode = 2
-focus_neighbor_top = NodePath("../BackButton")
-focus_neighbor_bottom = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../../BackButton")
+focus_neighbor_bottom = NodePath("../../BackButton")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[connection signal="button_down" from="CanvasLayer/BoxContainer/BackButton" to="." method="_on_back_button_button_down"]
-[connection signal="mouse_entered" from="CanvasLayer/BoxContainer/BackButton" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/BoxContainer/BackButton" to="." method="_on_button_mouse_exited"]
+[connection signal="button_down" from="CanvasLayer/BackButton" to="." method="_on_back_button_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/BackButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackButton" to="." method="_on_button_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_button_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
