@@ -5,9 +5,9 @@ var gravity: float
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity
-		set_collision_layer_value(1,false)
+		#set_collision_layer_value(1,false)
 	else:
-		set_collision_layer_value(1,true)
+		#set_collision_layer_value(1,true)
 		velocity.y = 0
 	velocity.x = move_toward(velocity.x,0,10)
 	

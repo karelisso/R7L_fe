@@ -23,6 +23,7 @@ var pos_buffer:PackedVector2Array
 var death = false
 var current_lvl:int
 @onready var carried:CharacterBody2D
+@onready var touched:CharacterBody2D
 func _ready() -> void:
 
 	start_gravity=gravity
@@ -46,13 +47,16 @@ func _physics_process(_delta):
 		carried.global_position = global_position +Vector2(0,-20) 
 		carried.velocity = Vector2.ZERO
 		if not Input.is_action_pressed("pick"):
-			carried.set_collision_layer_value(2,true)
+			#carried.set_collision_layer_value(2,true)
+			carried.global_position = global_position
 			if direction == 0:
 				carried.velocity += Vector2(0,-150)
 			else:
 				carried.velocity += Vector2(300*direction,-50)
 			carried = null
-	
+	else:
+		if Input.is_action_pressed("pick") and touched !=null:
+			carried = touched
 	total_gravity = ((gravity - 5) / abs(jump_velocity / 2)) * 10 #jump_velocity is half effective, multiplied by 10 to apply to scale easily
 	if total_gravity >= 2:
 		die()
@@ -122,9 +126,9 @@ func _physics_process(_delta):
 	
 	for i in get_slide_collision_count():
 		var im = get_slide_collision(i).get_collider()
-		if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
-			carried = im
-			carried.set_collision_layer_value(2,false)
+		#if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
+			#carried = im
+			#carried.set_collision_layer_value(2,false)
 	
 	if Input.is_action_just_pressed("reset"):
 		die()
@@ -155,7 +159,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "hazard":
 			die()
-
+	
 func _draw() -> void:
 	if pos_buffer.size() > 0:
 		if not snapback_automatic:
@@ -185,3 +189,17 @@ func die():
 	#var instance = main_menu.instantiate()
 	#get_tree().get_root().get_child(0).add_sibling(instance)
 	#get_tree().get_root().get_child(0).call_deferred("queue_free")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if "id" in body:
+		if body.id == "box":
+			#if Input.is_action_pressed("pick") and carried == null:
+			touched = body
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if "id" in body:
+		if body.id == "box":
+			#if Input.is_action_pressed("pick") and carried == null:
+			touched = null

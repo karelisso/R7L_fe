@@ -194,7 +194,9 @@ tags = {
 
 [node name="Character" type="CharacterBody2D" unique_id=466616266 groups=["player"]]
 z_index = 1
-collision_mask = 10
+collision_layer = 11
+collision_mask = 11
+platform_floor_layers = 4294967291
 script = ExtResource("1_rkhd4")
 snapback_automatic = false
 
@@ -218,6 +220,7 @@ mesh = SubResource("PlaneMesh_esqvk")
 texture = ExtResource("2_lrhn5")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=47805040]
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1471317511]
 scale = Vector2(0.8, 1)
@@ -236,3 +239,5 @@ autoplay = true
 stream = ExtResource("4_my7n2")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
