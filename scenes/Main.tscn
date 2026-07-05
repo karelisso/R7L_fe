@@ -9,7 +9,7 @@ font_size = 48
 [node name="main" type="Node2D" unique_id=1276813274 groups=["manager", "weighted"]]
 script = ExtResource("1_uu6xs")
 spawn = Vector2(100, 56)
-stages = PackedStringArray("res://levels/level_1.tscn", "res://levels/level_2.tscn", "res://levels/level_3.tscn", "res://levels/prot_3.tscn", "res://levels/prot_pipe.tscn")
+stages = PackedStringArray("res://levels/level_credit.tscn", "res://levels/level_2.tscn", "res://levels/level_3.tscn", "res://levels/level_4.tscn", "res://levels/level_final.tscn", "res://levels/level_credit.tscn", "res://levels/prot_3.tscn", "res://levels/prot_pipe.tscn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1170587652]
 
@@ -39,12 +39,12 @@ render_target_update_mode = 4
 
 [node name="Character" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=466616266 instance=ExtResource("2_uu6xs")]
 position = Vector2(230, 150)
-collision_layer = 4
-collision_mask = 9
+collision_layer = 1
 
 [node name="Parent" type="Node" parent="CanvasLayer/SubViewportContainer/subviewport" unique_id=431184468]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1242321196]
+visible = false
 offset_left = 28.0
 offset_top = 39.0
 offset_right = 133.0

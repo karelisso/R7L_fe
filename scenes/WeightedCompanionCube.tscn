@@ -6,8 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(16, 8)
+
 [node name="box" type="CharacterBody2D" unique_id=1342631449 groups=["box", "weighted"]]
-collision_layer = 3
+collision_layer = 4
 collision_mask = 3
 input_pickable = true
 script = ExtResource("1_cyr5r")
@@ -17,3 +20,13 @@ texture = ExtResource("2_62dxo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=546333388]
 shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1021758551]
+collision_layer = 17
+collision_mask = 0
+platform_floor_layers = 4294967040
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1381855406]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_xrivr")
+one_way_collision = true

@@ -9,7 +9,7 @@ var acceleration = 50
 var jump_velocity = -200.0
 var start_gravity
 var star_jump
-var can_walljump = false
+var can_walljump = true
 var walljump = true
 @onready var spring_sfx = $AudioStreamPlayer2
 @onready var anim = $AnimatedSprite2D
@@ -22,12 +22,16 @@ var id = "player"
 var pos_buffer:PackedVector2Array
 var death = false
 var current_lvl:int
+
+var respawn_delay_timer = -1
+
 @onready var carried:CharacterBody2D
+@onready var touched:CharacterBody2D
 func _ready() -> void:
 
 	start_gravity=gravity
 	star_jump=jump_velocity
-	
+	set_physics_process(true)
 	
 	if snapback_automatic:
 		pos_buffer.resize(snapback_length)
@@ -38,6 +42,14 @@ func _process(delta: float) -> void:
 	queue_redraw()
 	get_tree().call_group("weighted","SetGravity",gravity)
 	get_tree().call_group("playerseeker","SetPos",global_position)
+	#if respawn_delay_timer > -1:
+	respawn_delay_timer -= delta
+	if respawn_delay_timer < 0 and death:
+		respawn_delay_timer = -1
+		set_physics_process(true)
+		anim.modulate = Color(1, 1, 1, 1)
+		death = false
+		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0))
 
 func _physics_process(_delta):
 	var direction := Input.get_axis("left", "right")
@@ -46,19 +58,25 @@ func _physics_process(_delta):
 		carried.global_position = global_position +Vector2(0,-20) 
 		carried.velocity = Vector2.ZERO
 		if not Input.is_action_pressed("pick"):
-			carried.set_collision_layer_value(2,true)
+			carried.global_position = global_position
 			if direction == 0:
-				carried.velocity += Vector2(0,-150)
+				carried.velocity += Vector2(0,-150 -100*total_gravity)
 			else:
 				carried.velocity += Vector2(300*direction,-50)
 			carried = null
-	
+	else:
+		if Input.is_action_pressed("pick") and touched !=null:
+			carried = touched
+			carried.get_child(2).set_collision_layer_value(1,false)
 	total_gravity = ((gravity - 5) / abs(jump_velocity / 2)) * 10 #jump_velocity is half effective, multiplied by 10 to apply to scale easily
 	if total_gravity >= 2:
-		die()
-	if total_gravity >= 1: #gradual effects here
+		die(0.2,false)
+	elif total_gravity >= 1: #gradual effects here
 		scale.y = 1 - (total_gravity - 1) / 2
-		speed  = base_speed - (total_gravity - 1) * 100
+		speed = base_speed - (total_gravity - 1) * 100
+	else:
+		speed = base_speed
+		scale.y = 1
 	
 	if snapback_automatic:
 		snapback_counter+=1
@@ -119,12 +137,12 @@ func _physics_process(_delta):
 	
 	for i in get_slide_collision_count():
 		var im = get_slide_collision(i).get_collider()
-		if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
-			carried = im
-			carried.set_collision_layer_value(2,false)
+		#if im.is_in_group("weighted") and Input.is_action_pressed("pick") and carried == null:
+			#carried = im
+			#carried.set_collision_layer_value(2,false)
 	
 	if Input.is_action_just_pressed("reset"):
-		die()
+		die(0.05,true)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if "id" in area:
@@ -142,7 +160,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				pos_buffer.resize(snapback_length+2)
 			#area.call_deferred("loadlevel")
 			#area.get_parent().call_deferred("queue_free")
-			die()
+			die(1,true)
 		elif area.id == "spring":
 			spring_sfx.play()
 			gravity -= 1
@@ -151,8 +169,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			jump_velocity -= 100
 			area.get_parent().call_deferred("queue_free")
 		elif area.id == "hazard":
-			die()
-
+			die(0.5,false)
+	
 func _draw() -> void:
 	if pos_buffer.size() > 0:
 		if not snapback_automatic:
@@ -169,16 +187,38 @@ func Setup(pos:Vector2,boundstart:Vector2,boundend:Vector2):
 	$Camera2D.limit_top = boundstart.y
 	$Camera2D.limit_right = boundend.x
 	$Camera2D.limit_bottom = boundend.y
-func die():
+func die(timeRRR:float,wins:bool):
 		gravity = start_gravity
 		jump_velocity = star_jump
 		speed = base_speed
 		total_gravity=0
 		scale.y = 1
-		
-		get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
+		velocity = Vector2.ZERO
+		#get_tree().call_group("manager","ChangeScene",current_lvl,Vector2(0,0) )
+		respawn_delay_timer = timeRRR
+		death = true
+		if wins:
+			anim.modulate = Color(0, 0, 0, 0)
+		else:
+			anim.play("HeavyIsDead")
+		set_physics_process(false)
+		#
 
 	#var main_menu = load("res://scenes/main_menu.tscn")
 	#var instance = main_menu.instantiate()
 	#get_tree().get_root().get_child(0).add_sibling(instance)
 	#get_tree().get_root().get_child(0).call_deferred("queue_free")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if "id" in body:
+		if body.id == "box":
+			#if Input.is_action_pressed("pick") and carried == null:
+			touched = body
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if "id" in body:
+		if body.id == "box":
+			#if Input.is_action_pressed("pick") and carried == null:
+			touched = null

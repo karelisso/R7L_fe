@@ -1,14 +1,78 @@
 [gd_scene format=3 uid="uid://b3gpjh6md3bv1"]
 
 [ext_resource type="Script" uid="uid://ckyoe5ncvriam" path="res://scripts/area_2d.gd" id="1_uw2au"]
+[ext_resource type="Texture2D" uid="uid://gt3q1svq7o6n" path="res://textures/tiles/door.png" id="2_m640b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(26, 20)
+size = Vector2(16, 18)
 
-[node name="Area2D" type="Area2D" unique_id=1302724983]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgw3c"]
+atlas = ExtResource("2_m640b")
+region = Rect2(0, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrvbd"]
+atlas = ExtResource("2_m640b")
+region = Rect2(16, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqlok"]
+atlas = ExtResource("2_m640b")
+region = Rect2(32, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nvrk"]
+atlas = ExtResource("2_m640b")
+region = Rect2(48, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkxa6"]
+atlas = ExtResource("2_m640b")
+region = Rect2(64, 0, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w75he"]
+atlas = ExtResource("2_m640b")
+region = Rect2(0, 0, 16, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxjqk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgw3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrvbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqlok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nvrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkxa6")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w75he")
+}],
+"loop": 1,
+"name": &"wait",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=1302724983 node_paths=PackedStringArray("door")]
 script = ExtResource("1_uw2au")
 pos_x = -137
 pos_y = 56
+door = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1375467748]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=541495711]
+sprite_frames = SubResource("SpriteFrames_jxjqk")
+animation = &"open"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

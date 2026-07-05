@@ -2,13 +2,14 @@ extends CharacterBody2D
 var gravity: float
 @export var id = "box"
 @export var weight:float = 3
+var gr = false
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
+		gr = false
 		velocity.y += gravity
-		set_collision_layer_value(1,false)
-	else:
-		set_collision_layer_value(1,true)
-		velocity.y = 0
+	elif not gr:
+		$CharacterBody2D.set_collision_layer_value(1,true)
+		gr = true
 	velocity.x = move_toward(velocity.x,0,10)
 	
 	move_and_slide()

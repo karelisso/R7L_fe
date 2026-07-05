@@ -322,8 +322,8 @@ animations = [{
 }]
 
 [node name="Switch" type="Area2D" unique_id=767723140 groups=["weighted"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_jp6uh")
 min_range = 30
 max_range = 60

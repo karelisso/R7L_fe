@@ -17,7 +17,7 @@ func _ready() -> void:
 	#sceneparent.add_child(some_scene)
 	add_to_group("manager")
 	ChangeScene(0,spawn)
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			var pause_menu = load("res://scenes/pause_menu.tscn")
@@ -26,19 +26,20 @@ func _process(delta: float) -> void:
 			toggle_pause()
 	text.text = str(gravity)
 
-func ChangeScene(tooo:int,pos:Vector2):
+func ChangeScene(tooo:int,_pos:Vector2):
 	for n in sceneparent.get_children():
 		sceneparent.remove_child(n)
 		n.queue_free()
-	var some_scene = load(stages[tooo]) # returns a PackedScene
-	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
-	sceneparent.add_child(instanced_scene)
-	scene_loaded = false
+	call_deferred("Load",tooo)
 	#player.position = pos
 	#for child in get_children():
 		#if child is Label:
 			#child.reparent(self.get_child(0),true)
-
+func Load(tooo:int):
+	var some_scene = load(stages[tooo]) # returns a PackedScene
+	var instanced_scene = some_scene.instantiate() # returns an instance of the scene
+	sceneparent.add_child(instanced_scene)
+	scene_loaded = false
 func SetGravity(f:float):
 	#if not scene_loaded:
 		#for child in find_children("*", "Label", true, false):
@@ -53,15 +54,18 @@ func SetGravity(f:float):
 func toggle_pause():
 	if not is_paused:
 		is_paused = true
-		player.process_mode = Node.PROCESS_MODE_DISABLED
-		sceneparent.process_mode =Node.PROCESS_MODE_DISABLED
+		if player !=null:
+			player.process_mode = Node.PROCESS_MODE_DISABLED
+			sceneparent.process_mode =Node.PROCESS_MODE_DISABLED
 		#player_anim_sprite.speed_scale = 0
 		#player.set_process(false)
 		#player.set_physics_process(false)
 	else:
 		is_paused = false
-		player.process_mode = Node.PROCESS_MODE_INHERIT
-		sceneparent.process_mode =Node.PROCESS_MODE_INHERIT
+		
+		if player !=null:
+			player.process_mode = Node.PROCESS_MODE_INHERIT
+			sceneparent.process_mode =Node.PROCESS_MODE_INHERIT
 		#player_anim_sprite.speed_scale = 1
 		#player.set_process(true)
 		#player.set_physics_process(true)
