@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c6toiscbxbouq"]
 
 [ext_resource type="Texture2D" uid="uid://dk5lp8utd41y7" path="res://textures/objects/shiny_spring.png" id="2_f6w1c"]
-[ext_resource type="Script" uid="uid://dlurwb51dcreq" path="res://scripts/spring.gd" id="3_f6w1c"]
-[ext_resource type="Script" uid="uid://cgnhh5nkep8w7" path="res://scripts/spring_area_2d.gd" id="3_iudvb"]
+[ext_resource type="Script" uid="uid://sbxfwuckcfu2" path="res://scripts/spring_area_2d.gd" id="3_f6w1c"]
+[ext_resource type="Script" uid="uid://dlurwb51dcreq" path="res://scripts/spring.gd" id="3_iudvb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lmt8p"]
 orientation = 2
@@ -19,7 +19,7 @@ diffuse_texture = SubResource("CompressedTexture2D_iudvb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt8p"]
 
 [node name="Spring" type="CharacterBody2D" unique_id=911301289]
-script = ExtResource("3_f6w1c")
+script = ExtResource("3_iudvb")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="." unique_id=799513143]
 scale = Vector2(24, 24)
@@ -32,7 +32,7 @@ mesh = SubResource("PlaneMesh_lmt8p")
 texture = SubResource("CanvasTexture_l13eo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1906788137]
-script = ExtResource("3_iudvb")
+script = ExtResource("3_f6w1c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=591194738]
 scale = Vector2(0.8, 0.8)
