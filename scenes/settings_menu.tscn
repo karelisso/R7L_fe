@@ -22,12 +22,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="FocusGoblin" type="TextureButton" parent="CanvasLayer" unique_id=1311580266]
+offset_right = 40.0
+offset_bottom = 40.0
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_right = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+
 [node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=110130661]
 custom_minimum_size = Vector2(135, 45)
 offset_right = 135.0
 offset_bottom = 45.0
+focus_neighbor_left = NodePath("../BoxContainer/VolumeSlider")
 focus_neighbor_top = NodePath("../BoxContainer/VolumeSlider")
+focus_neighbor_right = NodePath("../BoxContainer/VolumeSlider")
 focus_neighbor_bottom = NodePath("../BoxContainer/VolumeSlider")
+focus_next = NodePath("../BoxContainer/VolumeSlider")
+focus_previous = NodePath("../BoxContainer/VolumeSlider")
 texture_normal = ExtResource("2_wswnh")
 texture_hover = ExtResource("3_labj1")
 texture_focused = ExtResource("3_labj1")
@@ -61,9 +73,15 @@ text = "Volume:"
 layout_mode = 2
 focus_neighbor_top = NodePath("../../BackButton")
 focus_neighbor_bottom = NodePath("../../BackButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
 [connection signal="button_down" from="CanvasLayer/BackButton" to="." method="_on_back_button_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/BackButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackButton" to="." method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_button_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/BoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
